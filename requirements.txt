@@ -1,0 +1,4 @@
+tweepy~=4.8.0
+Pillow>=6.2.1
+bs4~=0.0.1
+PyExecJS~=1.5.1
