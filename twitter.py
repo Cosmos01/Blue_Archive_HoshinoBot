@@ -40,7 +40,7 @@ async def im2base64str(img_url):
 
 async def get_tweets(client):
     msg_list = []
-    start_time = (datetime.datetime.utcnow() - datetime.timedelta(minutes=3.05)).isoformat("T")[:-4] + "Z"
+    start_time = (datetime.datetime.utcnow() - datetime.timedelta(minutes=5.05)).isoformat("T")[:-4] + "Z"
     tweets = client.get_users_tweets(id=1237586987969687555, start_time=start_time,
                                      tweet_fields=['created_at', 'entities'], media_fields=["url", "preview_image_url"],
                                      expansions="attachments.media_keys", exclude=["retweets", "replies"])
@@ -83,7 +83,7 @@ async def get_tweets(client):
     return msg_list
 
 
-@sv.scheduled_job('cron', minute='*/3')
+@sv.scheduled_job('cron', minute='*/5')
 async def send_tweet():
     bot = hoshino.get_bot()
     if os.path.exists(cfg_path):
