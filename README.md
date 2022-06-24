@@ -14,7 +14,7 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 
 ## 日程信息源
 日服: [BiliWiki](https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5)  
-日服新数据来源: [EnWiki]([https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5](https://bluearchive.wiki/wiki/Main_Page))  
+日服新数据来源: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)
 
 国际服暂未找到稳定信息源，故暂时只支持日服
 
