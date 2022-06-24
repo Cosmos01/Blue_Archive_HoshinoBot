@@ -23,10 +23,10 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 
 1. 在HoshinoBot的插件目录modules下clone本项目 `git clone https://github.com/Cosmos01/Blue_Archive_HoshinoBot.git`
 2. 进入本项目目录运行 `pip install -r requirements.txt `安装必要的第三方库
-3. 申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)
+3. (可选)申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)
 4. 在 `config/__bot__.py`的MODULES_ON列表里加入 `Blue_Archive_HoshinoBot`
-5. 将bluearchive文件夹移动到\HoshinoBot\res\img目录下，或下载[卡池资源](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/releases)替换
-6. 重启HoshinoBot  
+5. 将bluearchive文件夹移动到\HoshinoBot\res\img目录下，执行完第六步后发送ba更新卡池或下载[卡池资源](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/releases)替换
+6. 重启HoshinoBot
 
 部分模块默认是关闭状态，抽卡前请先更新卡池  
 使用bot指令开启功能：  
