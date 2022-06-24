@@ -25,7 +25,7 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 2. 进入本项目目录运行 `pip install -r requirements.txt `安装必要的第三方库
 3. (可选)申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)
 4. 在 `config/__bot__.py`的MODULES_ON列表里加入 `Blue_Archive_HoshinoBot`
-5. 将bluearchive文件夹移动到\HoshinoBot\res\img目录下，执行完第六步后发送ba更新卡池或下载[卡池资源](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/releases)替换
+5. 将bluearchive文件夹移动到\HoshinoBot\res\img目录下
 6. 重启HoshinoBot
 
 部分模块默认是关闭状态，抽卡前请先更新卡池  
@@ -33,8 +33,8 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 - `启用 ba_twitter`(确认已经填写好密钥再开启)
 - `启用 ba_calendar`
 - `启用 ba_comic_cn`
-- `ba日服日历 on`
-- `ba更新卡池`
+- `ba日服日历 on`(必要)
+- `ba更新卡池`(目前无法使用，可以手动下载[卡池资源](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/releases)替换对应文件)
 
 
 ## 指令列表
