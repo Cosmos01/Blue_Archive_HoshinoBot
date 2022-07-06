@@ -47,10 +47,14 @@ def extract_calendar_data(html_text):
     pickups = gacha_div.find_all("p")
     if len(pickups) > 0:
         for pickup in pickups:
-            if pickup.find("img"):
+            if pickup.find("img") or not pickup.find("a"):
                 continue
-            event_name = "本期卡池: " + str(pickup.find("a").get("title")).strip()
-            event_list.append(fmt_event(event_name, pickup.text, type=1))
+            try:
+                event_name = "本期卡池: " + str(pickup.find("a").get("title")).strip()
+                event_list.append(fmt_event(event_name, pickup.text, type=1))
+            except Exception as e:
+                logging.warning(e)
+                continue
 
     #raid
     if raid_div.find("span", id="currentraid"):
@@ -103,7 +107,7 @@ def extract_calendar_data(html_text):
                                 continue
                             event_list.append(fmt_event(dic[event_name],other_event.text))
             except Exception as e:
-                print(e)
+                logging.warning(e)
                 continue
 
     return event_list
