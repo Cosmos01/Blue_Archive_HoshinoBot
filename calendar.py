@@ -28,9 +28,8 @@ def load_data():
         return
     try:
         with open(path, encoding='utf8') as f:
-            data = json.load(f)
-            for k, v in data.items():
-                group_data[k] = v
+            global group_data
+            group_data = json.load(f)
     except:
         traceback.print_exc()
 
