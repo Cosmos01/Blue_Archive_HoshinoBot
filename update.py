@@ -165,3 +165,4 @@
 #     elif status == 2:
 #         msg = f'自动更新ba卡池时发生错误'
 #         await bot.send_private_msg(user_id=master_id, message=msg)
+
