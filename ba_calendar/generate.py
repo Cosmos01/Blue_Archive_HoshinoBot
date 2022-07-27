@@ -8,6 +8,7 @@ from .draw import *
 
 server_name = {
     'jp': '日服',
+    'global': '国际服'
 }
 
 
