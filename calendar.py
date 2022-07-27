@@ -1,7 +1,6 @@
 import base64
 from .ba_calendar.generate import *
 from .raid_img import get_raid_img
-from io import BytesIO
 import hoshino
 import nonebot
 import os
@@ -76,12 +75,14 @@ def update_group_schedule(group_id):
         minute = group_data[group_id]['minute']
         )
 
-@sv.on_rex(r'^ba([日])?服?日[历程](.*)')
+@sv.on_rex(r'^ba([日国台韩美])?[际際]?服?日[历程](.*)')
 async def start_scheduled(bot, ev):
     group_id = str(ev['group_id'])
     server_name = ev['match'].group(1)
     if server_name == '日':
         server = 'jp'
+    elif server_name in ["国","台","韩","美"]:
+        server = 'global'
     elif group_id in group_data and len(group_data[group_id]['server_list']) > 0:
         server = group_data[group_id]['server_list'][0]
     else:
@@ -122,6 +123,7 @@ async def start_scheduled(bot, ev):
                 group_data[group_id]['hour'] = int(match.group(1))
                 group_data[group_id]['minute'] = int(match.group(2))
                 msg = f"推送时间已设置为: {group_data[group_id]['hour']}:{group_data[group_id]['minute']:02d}"
+            save_data()
         elif 'status' in cmd:
             msg = f"订阅日历: {group_data[group_id]['server_list']}"
             msg += f"\n推送时间: {group_data[group_id]['hour']}:{group_data[group_id]['minute']:02d}"
