@@ -34,7 +34,7 @@ def extract_calendar_data(server):
     student_data = get_json_data(student_tw)
     localization_data = get_json_data(localization)
     raid_data = get_json_data(raids)
-    if common_data == None or student_data == None or localization_data == None:
+    if common_data == None or student_data == None or localization_data == None or raid_data == None:
         return None
 
 
