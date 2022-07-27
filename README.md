@@ -15,7 +15,7 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 ![FYBN %B61EG``_OG~B8XZ$B](https://user-images.githubusercontent.com/37209685/165712652-5b221387-f0cc-41c2-9b6c-9b6b76063ed5.PNG)
 
 ## 日程信息源
-日服新数据来源: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)
+日服新数据来源: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
 国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) (国际服更新速度可能比较慢)
 
 弃用：
