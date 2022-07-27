@@ -1,6 +1,7 @@
 ## 特殊情况
-BWIKI无了，自动更新抽卡已经无法使用了，日历数据已经替换为enwiki的，具体情况：https://t.bilibili.com/669346949195890741    
+BWIKI无了，自动更新抽卡和漫画推送已经无法使用了，日历数据已经替换为enwiki的，具体情况：https://t.bilibili.com/669346949195890741    
 BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数据，可以自行替换。（反正你游卡池更新慢，影响应该不大）
+
 ### bwiki好像开始甘地行为了，萌百还在他们好像就不开了的样子，算了，之后自己搞吧
 
 # Blue_Archive_HoshinoBot
@@ -15,7 +16,7 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 
 ## 日程信息源
 日服新数据来源: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)
-国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/)
+国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) (国际服更新速度可能比较慢)
 
 弃用：
 日服: [BiliWiki](https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5)  
