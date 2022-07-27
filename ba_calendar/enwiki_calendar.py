@@ -1,4 +1,5 @@
 import datetime
+import logging
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -73,11 +74,19 @@ def extract_calendar_data(html_text):
                 event = BeautifulSoup(str(event), "html.parser")
                 if len(event.text.strip()) < 4:  #有时候会冒出奇奇怪怪的测试内容,过滤一下
                     continue
+                
                 if event.find("img"):  #带图片的一般是各种活动
-                    page_url = event.find("a").get("href").strip()
-                    event_name = get_event_jp_name(page_url)
+                    event_name = ""
+                    if event.find("a"):
+                        page_url = event.find("a").get("href").strip()
+                        event_name = get_event_jp_name(page_url)
                     if event_name == "":
-                        event_name = event.find("a").get("title")
+                        if event.find("a"):
+                            event_name = event.find("a").get("title")
+                        elif event.find("li"):
+                            event_name = event.find("li").text
+                        else:
+                            event_name = event.text
                     event_list.append(fmt_event(event_name,event.text,type=1))
                 else:
                     other_events = event.find_all("li")
@@ -106,6 +115,7 @@ def extract_calendar_data(html_text):
                                 event_list.append(fmt_event(event_name,other_event.text,type=1))
                                 continue
                             event_list.append(fmt_event(dic[event_name],other_event.text))
+                            logging.warning(event_list)
             except Exception as e:
                 logging.warning(e)
                 continue
