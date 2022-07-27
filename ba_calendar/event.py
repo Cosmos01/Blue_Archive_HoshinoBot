@@ -6,20 +6,24 @@ import asyncio
 import math
 
 from .enwiki_calendar import transform_enwiki_calendar
+from .schaledb_calendar import transform_schaledb_calendar
 from .biliwiki_calendar import transform_biliwiki_calendar
 
 # type 0普通 1 活动 2双倍 3 总力战
 
 event_data = {
     'jp': [],
+    'global': [],
 }
 
 event_updated = {
     'jp': '',
+    'global':''
 }
 
 lock = {
     'jp': asyncio.Lock(),
+    'global': asyncio.Lock(),
 }
 
 
@@ -33,7 +37,7 @@ async def query_data(url):
     return None
 
 
-async def load_event_bilibili():
+async def load_event_enwiki():
     data = ''
     try:
         async with aiohttp.ClientSession() as session:
@@ -55,16 +59,48 @@ async def load_event_bilibili():
             event = {'title': item['title'], 'start': start_time, 'end': end_time, 'type': 1}
             if '倍' in event['title']:
                 event['type'] = 2
-            elif '总力战' in event['title'] or '演习' in event['title']:
+            elif '总力战' in event['title'] or '演习' in event['title'] or '演習' in event['title']:
                 event['type'] = 3
             event_data['jp'].append(event)
         return 0
     return 1
 
+async def load_event_schaledb(server):
+    data = ''
+    try:
+        data = transform_schaledb_calendar(server)
+        if data == None:
+            print('解析ba日程表失败')
+            return 1
+    except:
+        print('解析ba日程表失败')
+        return 1
+    if data:
+        if server == "jp":
+            event_data['jp'] = []
+        else:
+            event_data['global'] = []
+        for item in data:
+            start_time = datetime.datetime.strptime(item['start'], r"%Y/%m/%d %H:%M")
+            end_time = datetime.datetime.strptime(item['end'], r"%Y/%m/%d %H:%M")
+            event = {'title': item['title'], 'start': start_time, 'end': end_time, 'type': 1}
+            if '倍' in event['title']:
+                event['type'] = 2
+            elif '总力战' in event['title'] or '演习' in event['title'] or '演習' in event['title']:
+                event['type'] = 3
+            if server == "jp":
+                event_data['jp'].append(event)
+            else:
+                event_data['global'].append(event)
+        return 0
+    return 1
 
 async def load_event(server):
     if server == 'jp':
-        return await load_event_bilibili()
+        return await load_event_enwiki()
+        #return await load_event_schaledb("jp")
+    if server != 'jp':  #反正就俩服
+        return await load_event_schaledb("global")
     return 1
 
 
