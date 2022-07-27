@@ -15,10 +15,12 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 ![FYBN %B61EG``_OG~B8XZ$B](https://user-images.githubusercontent.com/37209685/165712652-5b221387-f0cc-41c2-9b6c-9b6b76063ed5.PNG)
 
 ## 日程信息源
-日服: [BiliWiki](https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5)  
 日服新数据来源: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)
+国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/)
 
-国际服暂未找到稳定信息源，故暂时只支持日服
+弃用：
+日服: [BiliWiki](https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5)  
+
 
 
 ## 安装方法
@@ -41,8 +43,8 @@ BWIKI开启前只能自行更新卡池了，Releases中给出了一份卡池数�
 
 ## 指令列表
 - `ba日历` : 查看本群订阅服务器日历
-- `ba日服日历` : 查看指定服务器日程
-- `ba日服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
+- `ba日(国际、台、韩、美)服日历` : 查看指定服务器日程
+- `ba日(国际、台、韩、美)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
 - `ba日历 time 时:分` : 设置日历推送时间
 - `ba日历 status` : 查看本群日历推送设置
 - `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片
