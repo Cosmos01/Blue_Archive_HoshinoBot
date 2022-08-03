@@ -95,7 +95,7 @@ def get_student_info(nickname):
     msg_list.append(res)
 
     #名字
-    names = base_info["Name"] + "、" + base_info["FamilyName"] + base_info["PersonalName"] + "、"
+    names = base_info["FamilyName"] + base_info["PersonalName"] + "、"
     for name in student_list[str(student_id)]:
         names = names + name + "、"
     msg_list.append(names[:-1])
