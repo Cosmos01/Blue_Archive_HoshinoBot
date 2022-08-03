@@ -6,6 +6,7 @@ import nonebot
 import os
 import re
 import traceback
+from .student_info import get_student_info
 
 HELP_STR = '''
 碧蓝档案活动日历
@@ -156,6 +157,15 @@ async def raid_img(bot, ev):
         return
     await bot.send(ev, f'[CQ:image,file={raid_img}]')
 
+
+@sv.on_prefix('ba查询')
+async def send_student_info(bot, ev):
+    nickname = ev.message.extract_plain_text()
+    msgs = get_student_info(nickname)
+    if msgs == None:
+        await bot.send(ev, "获取角色信息失败,请检查角色是否存在,或提交补充角色昵称")
+        return
+    await bot.send_group_forward_msg(group_id=ev.group_id,messages=msgs)
 
 @nonebot.on_startup
 async def startup():
