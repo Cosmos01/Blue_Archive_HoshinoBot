@@ -1,13 +1,11 @@
-from os import truncate
 import datetime
 import requests
-from bs4 import BeautifulSoup
-from html.parser import HTMLParser
+
 
 common = "https://lonqie.github.io/SchaleDB/data/common.json"
-localization = "https://lonqie.github.io/SchaleDB//data/localization.json"
+localization = "https://lonqie.github.io/SchaleDB/data/localization.json"
 raids = "https://lonqie.github.io/SchaleDB/data/raids.json"
-student_tw = "https://lonqie.github.io/SchaleDB/data/tw/students.json"
+student_cn = "https://lonqie.github.io/SchaleDB/data/cn/students.json"
 student_jp = "https://lonqie.github.io/SchaleDB/data/jp/students.json"
 
 def get_item(dict,key,value):
@@ -31,7 +29,7 @@ def extract_calendar_data(server):
     event_list = []
 
     common_data = get_json_data(common)
-    student_data = get_json_data(student_tw)
+    student_data = get_json_data(student_cn)
     localization_data = get_json_data(localization)
     raid_data = get_json_data(raids)
     if common_data == None or student_data == None or localization_data == None or raid_data == None:
@@ -59,8 +57,8 @@ def extract_calendar_data(server):
         event_id = event["event"]
         event_name = localization_data["strings"]["EventName"][str(event_id)]
         title = event_name["Jp"]
-        if event_name["Tw"] != None:
-            title = event_name["Tw"]
+        if event_name["Cn"] != None:
+            title = event_name["Cn"]
         start_time = datetime.datetime.fromtimestamp(event["start"]).strftime("%Y/%m/%d %H:%M")
         end_time = datetime.datetime.fromtimestamp(event["end"]).strftime("%Y/%m/%d %H:%M")
         event_list.append({'title': title, 'start': start_time, 'end': end_time})
@@ -73,24 +71,24 @@ def extract_calendar_data(server):
         if raid_id < 999:
             raid_info = get_item(raid_data["Raid"], "Id", raid_id)
             title = "总力战: " + raid_info["NameJp"]+f'({raid_info["DevName"]})'
-            if raid_info["NameTw"] != None:
-                title = "总力战: " + raid_info["NameTw"]
+            if raid_info["NameCn"] != None:
+                title = "总力战: " + raid_info["NameCn"]
             if "terrain" in raid:
                 title = title + f'({raid["terrain"]})'
         #演习
         if raid_id > 999 and raid_id < 99999:
             raid_info = get_item(raid_data["TimeAttack"], "Id", raid_id)
             title = raid_info["NameJp"]
-            if raid_info["NameTw"] != None:
-                title = raid_info["NameTw"]
+            if raid_info["NameCn"] != None:
+                title = raid_info["NameCn"]
             if "Terrain" in raid_info:
                 title = title + f'({raid_info["Terrain"]})'
         #世界boss
         if raid_id > 800000 and raid_id < 900000:
             raid_info = get_item(raid_data["WorldRaid"], "Id", raid_id)
             title = raid_info["NameJp"]
-            if raid_info["NameTw"] != None:
-                title = raid_info["NameTw"]
+            if raid_info["NameCn"] != None:
+                title = raid_info["NameCn"]
 
         if title != "":
             start_time = datetime.datetime.fromtimestamp(raid["start"]).strftime("%Y/%m/%d %H:%M")
