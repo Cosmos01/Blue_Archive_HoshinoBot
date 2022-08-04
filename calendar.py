@@ -26,9 +26,9 @@ def load_data():
     path = os.path.join(os.path.dirname(__file__), 'data.json')
     if not os.path.exists(path):
         return
+    global group_data
     try:
         with open(path, encoding='utf8') as f:
-            global group_data
             group_data = json.load(f)
     except:
         traceback.print_exc()
