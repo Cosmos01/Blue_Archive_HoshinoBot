@@ -64,17 +64,17 @@ def fmt_para(match):
     return str
 
 def get_student_info(nickname):
+
+    student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
+    student_id = int(get_student_id(student_list,nickname))
+    if student_id == None:
+        return None
+
     global common_data
     common_data = get_json_data(common_url)
     student_data = get_json_data(students_url)
     localization_data = get_json_data(localization_url)["strings"]
     if common_data == None or student_data == None or localization_data == None:
-        return None
-
-    student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
-
-    student_id = int(get_student_id(student_list,nickname))
-    if student_id == None:
         return
 
     msg_list = []
