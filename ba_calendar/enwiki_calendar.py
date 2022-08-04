@@ -115,7 +115,6 @@ def extract_calendar_data(html_text):
                                 event_list.append(fmt_event(event_name,other_event.text,type=1))
                                 continue
                             event_list.append(fmt_event(dic[event_name],other_event.text))
-                            logging.warning(event_list)
             except Exception as e:
                 logging.warning(e)
                 continue
