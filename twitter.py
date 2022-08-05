@@ -1,13 +1,61 @@
+import logging
+import hoshino
+from hoshino import aiorequests
+
+sv = hoshino.Service('ba_twitter', enable_on_default=False, visible=True, bundle='ba_twitter')
+
+async def get_tweets():
+    try:
+        res = await aiorequests.get("http://45.86.70.253:40000/ba_twitter.json",timeout=20)
+        return res
+    except:
+        return None
+
+async def get_msgs():
+    res = ""
+    for i in range(6):
+        res = await get_tweets()
+        if res != None:
+            break
+        if i == 5:
+            logging.warning("获取ba推特数据失败,请检查是否有更新或提交issues")
+            return None
+    json_data = await res.json()
+    data_list = json_data["data"]
+    msg_list = []
+    for data in data_list:
+        msg = ""
+        msg += data["msg"]
+        if len(data["imgs"]) > 0:
+            for img in data["imgs"]:
+                msg += f"[CQ:image,file={img}]"
+        msg_list.append(msg)
+    return msg_list
+
+
+@sv.scheduled_job('cron', minute='*/3')
+async def send_tweet():
+    bot = hoshino.get_bot()
+    available_group = await sv.get_enable_groups()
+    msg_list = await get_msgs()
+    if msg_list != None and len(msg_list) > 0:
+        for group_id in available_group:
+            for msg in msg_list:
+                await bot.send_group_msg(group_id=int(group_id), message=msg)
+
+
+
+
+# 以下为本地获取推特方案
+'''
 import datetime
 import base64
 import json
 from pygtrans import Translate
 import os
-from urllib.parse import quote
 import tweepy
 import hoshino
-from hoshino.typing import CQEvent
-from hoshino import aiorequests, priv
+from hoshino import aiorequests
 
 sv = hoshino.Service('ba_twitter', enable_on_default=False, visible=True, bundle='ba_twitter')
 cfg_path = os.path.join(os.path.dirname(__file__), 'twitter.json')
@@ -40,7 +88,7 @@ async def im2base64str(img_url):
 
 async def get_tweets(client):
     msg_list = []
-    start_time = (datetime.datetime.utcnow() - datetime.timedelta(minutes=5.05)).isoformat("T")[:-4] + "Z"
+    start_time = (datetime.datetime.utcnow() - datetime.timedelta(minutes=3.02)).isoformat("T")[:-4] + "Z"
     tweets = client.get_users_tweets(id=1237586987969687555, start_time=start_time,
                                      tweet_fields=['created_at', 'entities'], media_fields=["url", "preview_image_url"],
                                      expansions="attachments.media_keys", exclude=["retweets", "replies"])
@@ -55,7 +103,7 @@ async def get_tweets(client):
         for k, v in rep1.items():
             text = text.replace(k, v)
         # 生草翻译，N114514可以注释这三行
-        res = Translate().translate(text,source="ja",fmt="text") 
+        res = Translate().translate(text,source="ja",fmt="text")
         if res != None:
             text = res.translatedText
         # 替换文本
@@ -83,7 +131,7 @@ async def get_tweets(client):
     return msg_list
 
 
-@sv.scheduled_job('cron', minute='*/5')
+@sv.scheduled_job('cron', minute='*/3')
 async def send_tweet():
     bot = hoshino.get_bot()
     if os.path.exists(cfg_path):
@@ -98,3 +146,4 @@ async def send_tweet():
             for msg in msg_list:
                 await bot.send_group_msg(group_id=int(group_id), message=msg)
 
+'''
