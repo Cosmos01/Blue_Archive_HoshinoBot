@@ -1,9 +1,3 @@
-## 特殊情况
-BWIKI无了，自动更新抽卡和漫画推送已经无法使用了，日历数据已经替换为enwiki的，具体情况：https://t.bilibili.com/669346949195890741    
-### bwiki好像开始甘地行为了，萌百还在他们好像就不开了的样子，算了，之后自己搞吧
-
-Releases中给出了一份卡池数据，可以自行替换。(正在更新方案，八月中旬之前搞定)
-
 # Blue_Archive_HoshinoBot
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询插件, 适用于 HoshinoBot v2.  
 
@@ -38,7 +32,7 @@ Releases中给出了一份卡池数据，可以自行替换。(正在更新方�
 - `启用 ba_calendar`
 - `启用 ba_comic_cn`
 - `ba日(国际、台、韩、美)服日历 on`(必要)
-- `ba更新卡池`(目前无法使用，可以手动下载[卡池资源](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/releases)替换对应文件)
+- `ba更新卡池` 
 
 
 ## 指令列表
