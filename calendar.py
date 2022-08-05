@@ -172,3 +172,7 @@ async def startup():
     load_data()
     for group_id in group_data:
         update_group_schedule(group_id)
+        
+@sv.scheduled_job('cron', hour='8', jitter=1)
+async def auto_load_data():
+    load_data()
