@@ -12,6 +12,26 @@ pool_path = os.path.join(os.path.dirname(__file__), 'gacha', 'config.json')
 
 chara_url = "https://raw.githubusercontent.com/Cosmos01/Blue_Archive_HoshinoBot/main/gacha/_ba_data.json"
 pool_url = "https://raw.githubusercontent.com/Cosmos01/Blue_Archive_HoshinoBot/main/gacha/config.json"
+student_jp_url = "https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp/students.json"
+
+async def update_icon():
+    try:
+        student_res = await aiorequests.get(student_jp_url, timeout=15)
+        students = await student_res.json()
+        for student in students:
+            if R.img(f'bluearchive/unit/icon_unit_{str(student["Id"])}.png').exist:
+                continue
+            print(f'检测到缺失角色图片：{student["DevName"]}，正在从SchaleDB下载图片')
+            img = await aiorequests.get(
+                f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/Student_Portrait_{student["DevName"]}_Collection.png',
+                timeout=15)
+            img_save_path = os.path.abspath(
+                os.path.join(hoshino.config.RES_DIR, f'img/bluearchive/unit/icon_unit_{str(student["Id"])}.png'))
+            img_cont = await img.content
+            with open(img_save_path, 'wb') as f:
+                f.write(img_cont)
+    except:
+        return
 
 async def update():
     try:
@@ -30,7 +50,7 @@ async def update():
 
         with open(pool_path, "w", encoding='utf8') as f:
             json.dump(local_pool, f, ensure_ascii=False)
-
+        await update_icon()
         return f'日服:{str(local_pool["JP"]["up"])} fes:{str(local_pool["FES"]["up"])} 国际服:{str(local_pool["GLOBAL"]["up"])}'
     except Exception as e:
         logging.warning(e)
