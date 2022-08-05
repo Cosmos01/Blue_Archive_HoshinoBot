@@ -1,3 +1,4 @@
+import base64
 import importlib
 import json
 from io import BytesIO
@@ -126,6 +127,21 @@ class Chara:
         if not res.exist:
             _ba_data = json.load(open(os.path.join(os.path.dirname(__file__), '_ba_data.json'), encoding="utf-8"))
             res = R.img(f'bluearchive/unit/icon_unit_{self.id}.png')
+        if not res.exist:
+            #自动获取
+            if self.name != "Unknown":
+                try:
+                    img = requests.get(
+                        f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/Student_Portrait_{str(self.name).strip()}_Collection.png',
+                        timeout=15).content
+                    img_save_path = os.path.abspath(os.path.join(hoshino.config.RES_DIR, f'img/bluearchive/unit/icon_unit_{self.id}.png'))
+                    with open(img_save_path, 'wb') as f:
+                        f.write(img)
+                    res = R.img(f'bluearchive/unit/icon_unit_{self.id}.png')
+                except:
+                    res = R.img(f'bluearchive/unit/icon_unit_{UNKNOWN}.png')
+            else:
+                res = R.img(f'bluearchive/unit/icon_unit_{UNKNOWN}.png')
         if not res.exist:
             res = R.img(f'bluearchive/unit/icon_unit_{UNKNOWN}.png')
         return res
