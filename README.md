@@ -48,5 +48,8 @@
 - `ba氪金+@目标` : 恢复抽卡次数，可@多个目标
 - `ba查询+角色名或昵称` : 查询角色信息
 
+##注意事项
+修改角色表(_ba_data.json)文件时需要注意，数组第一位必需为DevName,否则自动获取图片无法使用，DevName见[SchaleDB](https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp/students.json)
+
 ## 鸣谢
 感谢沙雕群友提供的代码
