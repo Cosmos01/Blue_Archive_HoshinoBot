@@ -37,7 +37,7 @@ Releases中给出了一份卡池数据，可以自行替换。(正在更新方�
 - `启用 ba_twitter`(确认已经填写好密钥再开启)
 - `启用 ba_calendar`
 - `启用 ba_comic_cn`
-- `ba日服日历 on`(必要)
+- `ba日(国际、台、韩、美)服日历 on`(必要)
 - `ba更新卡池`(目前无法使用，可以手动下载[卡池资源](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/releases)替换对应文件)
 
 
