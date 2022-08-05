@@ -17,6 +17,8 @@ UNKNOWN = "1000"
 UnavailableChara = {
 }
 
+
+
 try:
     _ba_data = json.load(open(os.path.join(os.path.dirname(__file__), '_ba_data.json'),encoding="utf-8"))
     gadget_star = R.img('bluearchive/gadget/star.png').open()
@@ -26,6 +28,7 @@ except Exception as e:
     logger.exception(e)
 
 
+
 class Roster:
 
     def __init__(self):
@@ -33,6 +36,7 @@ class Roster:
         self.update()
 
     def update(self):
+        global _ba_data
         _ba_data = json.load(open(os.path.join(os.path.dirname(__file__), '_ba_data.json'), encoding="utf-8"))
         self._roster.clear()
         for idx, names in _ba_data["CHARA_NAME"].items():
@@ -46,6 +50,10 @@ class Roster:
 
     def get_id(self, name):
         name = util.normalize_str(name)
+        if name in self._roster:
+            return self._roster[name]
+        else:
+            self.update()
         return self._roster[name] if name in self._roster else UNKNOWN
 
     def guess_id(self, name):
@@ -111,9 +119,22 @@ class Chara:
     def __init__(self, id_, star=0):
         self.id = id_
         self.star = star
+        self.load_data()
+
+    def load_data(self):
+        try:
+            global _ba_data
+            _ba_data = json.load(open(os.path.join(os.path.dirname(__file__), '_ba_data.json'), encoding="utf-8"))
+        except Exception as e:
+            logger.exception(e)
 
     @property
     def name(self):
+        return _ba_data["CHARA_NAME"][self.id][1] if self.id in _ba_data["CHARA_NAME"] else \
+        _ba_data["CHARA_NAME"][UNKNOWN][0]
+
+    @property
+    def dev_name(self):
         return _ba_data["CHARA_NAME"][self.id][0] if self.id in _ba_data["CHARA_NAME"] else \
         _ba_data["CHARA_NAME"][UNKNOWN][0]
 
@@ -129,7 +150,7 @@ class Chara:
             res = R.img(f'bluearchive/unit/icon_unit_{self.id}.png')
         if not res.exist:
             #自动获取
-            if self.name != "Unknown":
+            if self.dev_name != "Unknown":
                 try:
                     img = requests.get(
                         f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/Student_Portrait_{str(self.name).strip()}_Collection.png',
