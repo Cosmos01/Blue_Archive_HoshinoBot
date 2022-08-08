@@ -3,7 +3,7 @@ import requests
 
 
 common = "https://lonqie.github.io/SchaleDB/data/common.json"
-localization = "https://lonqie.github.io/SchaleDB/data/localization.json"
+localization = "https://lonqie.github.io/SchaleDB/data/cn/localization.json"
 raids = "https://lonqie.github.io/SchaleDB/data/raids.json"
 student_cn = "https://lonqie.github.io/SchaleDB/data/cn/students.json"
 student_jp = "https://lonqie.github.io/SchaleDB/data/jp/students.json"
@@ -55,7 +55,7 @@ def extract_calendar_data(server):
     #event
     for event in data["current_events"]:
         event_id = event["event"]
-        event_name = localization_data["strings"]["EventName"][str(event_id)]
+        event_name = localization_data["EventName"][str(event_id)]
         title = event_name["Jp"]
         if event_name["Cn"] != None:
             title = event_name["Cn"]
