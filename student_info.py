@@ -8,10 +8,11 @@ from hoshino import R
 
 
 students_url = "https://lonqie.github.io/SchaleDB/data/cn/students.json"
-localization_url = "https://lonqie.github.io/SchaleDB/data/localization.json"
+localization_cn_url = "https://lonqie.github.io/SchaleDB/data/cn/localization.json"
+localization_jp_url = "https://lonqie.github.io/SchaleDB/data/jp/localization.json"
 common_url = "https://lonqie.github.io/SchaleDB/data/common.json"
 
-common_data = {}
+localization_cn_data = {}
 
 def get_item(dict,key,value):
     for item in dict:
@@ -36,8 +37,8 @@ def get_json_data(url):
     return None
 
 def fmt_desc(match):
-    global common_data
-    buffs = common_data["buffs"]
+    global localization_cn_data
+    buffs = localization_cn_data["BuffName"]
 
     buff_types = {"b":"Buff_","d":"Debuff_","c":"CC_","s":"Special_"}
     if match.group(1) not in buff_types:
@@ -45,13 +46,8 @@ def fmt_desc(match):
 
     buff_name = buff_types[match.group(1)] + match.group(2)
     if buff_name not in buffs:
-        return match.group()
-    buff = buffs[buff_name]
-    if "NameCn" in buff and buff["NameCn"] != None:
-        return buff["NameCn"]
-    if "NameJp" in buff and buff["NameJp"] != None:
-        return f'{buff["NameJp"]}({buff["NameEn"]})'
-    return buff["NameEn"]
+        return buff_name
+    return buffs[buff_name]
 
 
 parameters = []
@@ -70,11 +66,12 @@ def get_student_info(nickname):
     if student_id == None:
         return None
 
-    global common_data
+    global localization_cn_data
     common_data = get_json_data(common_url)
     student_data = get_json_data(students_url)
-    localization_data = get_json_data(localization_url)["strings"]
-    if common_data == None or student_data == None or localization_data == None:
+    localization_cn_data = get_json_data(localization_cn_url)
+    localization_jp_data = get_json_data(localization_jp_url)
+    if common_data == None or student_data == None or localization_cn_data == None or localization_jp_data == None:
         return
 
     msg_list = []
@@ -101,10 +98,12 @@ def get_student_info(nickname):
     msg_list.append(names[:-1])
 
     #背景
-    school = localization_data["School"][base_info["School"]]
-    club = localization_data["Club"][base_info["Club"]]
+    school = localization_cn_data["School"][base_info["School"]]
+    school_jp = localization_jp_data["School"][base_info["School"]]
+    club = localization_cn_data["Club"][base_info["Club"]]
+    club_jp = localization_jp_data["Club"][base_info["Club"]]
 
-    msg_list.append(f'学校:{school["Jp"]}({school["Cn"]})\n社团:{club["Jp"]}({club["Cn"]})\n'
+    msg_list.append(f'学校:{school_jp}({school})\n社团:{club_jp}({club})\n'
                     f'{base_info["SchoolYear"]}  {base_info["CharacterAge"]}\n生日:{base_info["Birthday"]}')
 
     #属性
@@ -168,8 +167,6 @@ def get_student_info(nickname):
         skill_desc += "\n" + desc + "\n\n"
 
     msg_list.append(skill_desc)
-
-
 
 
     forward_msg = []
