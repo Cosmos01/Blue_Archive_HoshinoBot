@@ -70,7 +70,7 @@ def update_group_schedule(group_id):
         send_calendar, 
         'cron', 
         args = (group_id,), 
-        id = f'calendar_{group_id}', 
+        id = f'ba_calendar_{group_id}', 
         replace_existing = True, 
         hour = group_data[group_id]['hour'], 
         minute = group_data[group_id]['minute']
@@ -167,6 +167,7 @@ async def send_student_info(bot, ev):
         return
     await bot.send_group_forward_msg(group_id=ev.group_id,messages=msgs)
 
+    
 @nonebot.on_startup
 async def startup():
     load_data()
