@@ -41,7 +41,7 @@
 - `ba日历 time 时:分` : 设置日历推送时间
 - `ba日历 status` : 查看本群日历推送设置
 - `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片
-- `(x服)总力一图流` : 查看当前总力一图流,服务器名为空时默认日服(目前需要代理，过段时间提供api)
+- `(x服)总力一图流` : 查看当前总力一图流,服务器名为空时默认日服(同推特，可以改为本地获取,见注意事项3)
 - `ba来一井\ba十连\ba单抽` : 模拟抽卡
 - `ba更新卡池` : 更新卡池
 - `ba氪金+@目标` : 恢复抽卡次数，可@多个目标
@@ -49,7 +49,8 @@
 
 ## 注意事项  
 1. 修改角色表(_ba_data.json)文件时需要注意，数组第一位必需为DevName,否则自动获取图片无法使用，DevName见[SchaleDB](https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp/students.json)  
-2. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier)  
+2. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier)
+3. 总力一图流同上，注释上面代码，取消注释下面代码，配置代理
 
 ## 鸣谢
 感谢沙雕群友提供的代码  
