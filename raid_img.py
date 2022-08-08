@@ -1,7 +1,35 @@
+import logging
+from hoshino import aiorequests
+
+async def get_img(server = "日"):
+    if server == "國際":
+        url = "http://45.86.70.253:40000/ba_raid_global.json"
+    else:
+        url = "http://45.86.70.253:40000/ba_raid_jp.json"
+    try:
+        res = await aiorequests.get(url,timeout=20)
+        json_data = await res.json()
+        return json_data["raid_img"]
+    except:
+        return None
+
+async def get_raid_img(server):
+    img = ""
+    for i in range(6):
+        img = await get_img(server)
+        if img != None:
+            break
+        if i == 5:
+            logging.warning("获取ba_raid数据失败,请检查是否有更新或提交issues")
+            return None
+    return img
+
+
+# 以下为本地获取方案
+'''
 import base64
 import aiohttp
 from bs4 import BeautifulSoup
-
 
 # 从巴哈姆特论坛获取总力攻略图，获取方式比较粗糙，可能会取错帖子。
 # 实现方法：获取当前总力战top1的帖子的第二张图片。
@@ -30,3 +58,5 @@ async def get_raid_img(server = "日"):
     except Exception as e:
         print(e)
         return ""
+        
+'''
