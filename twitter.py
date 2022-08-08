@@ -33,7 +33,7 @@ async def get_msgs():
     return msg_list
 
 
-@sv.scheduled_job('cron', minute='*/3')
+@sv.scheduled_job('cron', minute='*/5')
 async def send_tweet():
     bot = hoshino.get_bot()
     available_group = await sv.get_enable_groups()
