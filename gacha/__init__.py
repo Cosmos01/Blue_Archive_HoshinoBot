@@ -20,6 +20,7 @@ sv_help = '''
 [ba来一井] 2w4钻！
 [ba查看卡池] 模拟卡池&出率
 [ba切换卡池] 更换模拟卡池
+[ba氪金+@] 充满！
 '''.strip()
 sv = Service('blue_gacha', help_=sv_help)
 jewel_limit = DailyNumberLimiter(15000)
@@ -56,7 +57,7 @@ async def gacha_info(bot, ev: CQEvent):
                    f"本期碧蓝档案卡池主打的角色：\n{up_chara}\nUP角色合计={(gacha.up_prob / 10):.1f}% 3★出率={(gacha.s3_prob) / 10:.1f}%")
 
 
-POOL_NAME_TIP = '请选择以下卡池\n> 切换卡池jp\n> 切换卡池tw\n> 切换卡池b\n> 切换卡池mix'
+POOL_NAME_TIP = '请选择以下卡池\n> 切换卡池jp\n> 切换卡池fes\n> 切换卡池global'
 
 
 @sv.on_prefix('ba切换卡池', 'ba选择卡池')
@@ -66,14 +67,10 @@ async def set_pool(bot, ev: CQEvent):
     name = util.normalize_str(ev.message.extract_plain_text())
     if not name:
         await bot.finish(ev, POOL_NAME_TIP, at_sender=True)
-    elif name in ('国际', '国际服', '台', '美', '韩', '台服', '美服', '韩服' 'global', 'GLOBAL'):
+    elif name in ('国际', '国际服', '台', '美', '韩', '台服', '美服', '韩服', 'global', 'GLOBAL', 'Global','tw'):
         name = 'GLOBAL'
     elif name in ('日', '日服', 'jp', 'JP'):
         name = 'JP'
-    elif name in ('混', '混合', 'mix', 'MIX'):
-        name = 'MIX'
-    elif name in ('MIKA', 'mika', '未花', '猩猩'):
-        name = 'MIKA'
     elif name in ('FES', 'fes'):
         name = 'FES'
     else:
