@@ -12,7 +12,7 @@ pool_path = os.path.join(os.path.dirname(__file__), 'gacha', 'config.json')
 
 chara_url = "https://raw.githubusercontent.com/Cosmos01/Blue_Archive_HoshinoBot/main/gacha/_ba_data.json"
 pool_url = "https://raw.githubusercontent.com/Cosmos01/Blue_Archive_HoshinoBot/main/gacha/config.json"
-student_jp_url = "https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp/students.json"
+student_jp_url = "https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp/students.min.json"
 
 async def update_icon():
     try:
