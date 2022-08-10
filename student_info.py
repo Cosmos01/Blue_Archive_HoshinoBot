@@ -82,7 +82,7 @@ def get_student_info(nickname):
     res = R.img(f'bluearchive/unit/icon_unit_{str(student_id)}.png')
     if not res.exist:
         try:
-            img = requests.get(f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/Student_Portrait_{base_info["DevName"].strip()}_Collection.png',timeout=15).content
+            img = requests.get(f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/{base_info["CollectionTexture"]}.png',timeout=15).content
             base64_str = f"base64://{base64.b64encode(img).decode()}"
             res = f"[CQ:image,file={base64_str}]"
         except:
@@ -174,8 +174,8 @@ def get_student_info(nickname):
         forward_msg.append({
         "type": "node",
         "data": {
-            "name": "阿罗娜",
-            "uin": "2854196306",
+            "name": "加二团每月找我领3单",
+            "uin": "652994240",
             "content": msg
         }
     })
