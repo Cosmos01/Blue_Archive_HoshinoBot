@@ -22,8 +22,9 @@ async def update_icon():
             if R.img(f'bluearchive/unit/icon_unit_{str(student["Id"])}.png').exist:
                 continue
             print(f'检测到缺失角色图片：{student["DevName"]}，正在从SchaleDB下载图片')
+            CollectionTexture = student["CollectionTexture"]
             img = await aiorequests.get(
-                f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/Student_Portrait_{student["DevName"]}_Collection.png',
+                f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/{CollectionTexture}.png',
                 timeout=15)
             img_save_path = os.path.abspath(
                 os.path.join(hoshino.config.RES_DIR, f'img/bluearchive/unit/icon_unit_{str(student["Id"])}.png'))
