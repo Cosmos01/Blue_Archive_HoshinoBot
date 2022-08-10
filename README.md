@@ -51,7 +51,7 @@
 1. 修改角色表(_ba_data.json)文件时需要注意，数组第一位必需为DevName,否则自动获取图片无法使用，DevName见[SchaleDB](https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp/students.json)  
 2. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier,)
 3. 总力一图流可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)
-4. 获取图片可能存在一些问题，之前安装的出现问题请重新下载本项目中的图片资源文件替换。后续会更新更好的获取图片方案。
+4. 之前的图片获取存在问题，如果安装了2022年8月10日前的版本，遇到问题可以删除资源文件'unit'中'icon_unit_1000.png'以外的图片，使用'ba更新卡池'指令更新。
 
 ## 鸣谢
 感谢沙雕群友提供的代码  
