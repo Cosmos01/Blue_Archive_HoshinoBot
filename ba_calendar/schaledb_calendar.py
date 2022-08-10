@@ -1,12 +1,11 @@
 import datetime
 import requests
 
-
 common = "https://lonqie.github.io/SchaleDB/data/common.json"
 localization = "https://lonqie.github.io/SchaleDB/data/cn/localization.json"
 raids = "https://lonqie.github.io/SchaleDB/data/raids.json"
-student_cn = "https://lonqie.github.io/SchaleDB/data/cn/students.json"
-student_jp = "https://lonqie.github.io/SchaleDB/data/jp/students.json"
+student_cn = "https://lonqie.github.io/SchaleDB/data/cn/students.min.json"
+student_jp = "https://lonqie.github.io/SchaleDB/data/jp/students.min.json"
 
 def get_item(dict,key,value):
     for item in dict:
@@ -56,12 +55,9 @@ def extract_calendar_data(server):
     for event in data["current_events"]:
         event_id = event["event"]
         event_name = localization_data["EventName"][str(event_id)]
-        title = event_name["Jp"]
-        if event_name["Cn"] != None:
-            title = event_name["Cn"]
         start_time = datetime.datetime.fromtimestamp(event["start"]).strftime("%Y/%m/%d %H:%M")
         end_time = datetime.datetime.fromtimestamp(event["end"]).strftime("%Y/%m/%d %H:%M")
-        event_list.append({'title': title, 'start': start_time, 'end': end_time})
+        event_list.append({'title': event_name, 'start': start_time, 'end': end_time})
 
     #raid
     for raid in data["current_raid"]:
