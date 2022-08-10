@@ -96,5 +96,3 @@ def extract_calendar_data(server):
 def transform_schaledb_calendar(server):
     data = extract_calendar_data(server)
     return data
-
-
