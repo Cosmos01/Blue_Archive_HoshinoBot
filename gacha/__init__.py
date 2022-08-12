@@ -206,7 +206,7 @@ async def gacha_200(bot, ev: CQEvent):
 
 @sv.on_prefix('ba氪金')
 async def kakin(bot, ev: CQEvent):
-    if ev.user_id not in bot.config.SUPERUSERS:
+    if not priv.check_priv(ev, priv.ADMIN):
         return
     count = 0
     for m in ev.message:
