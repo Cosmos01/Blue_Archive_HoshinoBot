@@ -3,7 +3,7 @@ import requests
 
 common = "https://lonqie.github.io/SchaleDB/data/common.json"
 localization = "https://lonqie.github.io/SchaleDB/data/cn/localization.json"
-raids = "https://lonqie.github.io/SchaleDB/data/raids.json"
+raids = "https://lonqie.github.io/SchaleDB/data/raids.min.json"
 student_cn = "https://lonqie.github.io/SchaleDB/data/cn/students.min.json"
 student_jp = "https://lonqie.github.io/SchaleDB/data/jp/students.min.json"
 
@@ -66,9 +66,10 @@ def extract_calendar_data(server):
         #总力
         if raid_id < 999:
             raid_info = get_item(raid_data["Raid"], "Id", raid_id)
-            title = "总力战: " + raid_info["NameJp"]+f'({raid_info["DevName"]})'
             if raid_info["NameCn"] != None:
                 title = "总力战: " + raid_info["NameCn"]
+            else:
+                title = "总力战: " + raid_info["NameJp"] + f'({raid_info["PathName"]})'
             if "terrain" in raid:
                 title = title + f'({raid["terrain"]})'
         #演习
