@@ -182,8 +182,8 @@ def get_student_info(nickname):
         forward_msg.append({
         "type": "node",
         "data": {
-            "name": "加二团每月找我领3单",
-            "uin": "652994240",
+            "name": "小冰",
+            "uin": "2854196306",
             "content": msg
         }
     })
