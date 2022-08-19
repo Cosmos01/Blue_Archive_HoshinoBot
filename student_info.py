@@ -177,7 +177,6 @@ def get_student_info(nickname):
 
     msg_list.append(skill_desc)
 
-
     forward_msg = []
     for msg in msg_list:
         forward_msg.append({
