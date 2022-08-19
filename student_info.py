@@ -59,6 +59,13 @@ def fmt_para(match):
     str = f'{parameters[int(match.group(1))-1][0]}({parameters[int(match.group(1))-1][-1]})'
     return str
 
+def fmt_para_ex(match):
+    global parameters
+    if parameters == []:
+        return "UNKNOW"
+    str = f'{parameters[int(match.group(1)) - 1][0]}({parameters[int(match.group(1)) - 1][4]})'
+    return str
+
 def get_student_info(nickname):
 
     student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
@@ -159,10 +166,12 @@ def get_student_info(nickname):
     for skill in skills:
         skill_desc += skill["SkillType"] + "\n"
         skill_desc += skill["Name"]
+        parameters = skill["Parameters"]
         if skill["SkillType"] == "ex":
             skill_desc += f' (Cost:{str(skill["Cost"][0])}→{str(skill["Cost"][-1])})'
-        parameters = skill["Parameters"]
-        desc = re.sub(r'<\?(\d+)>',fmt_para,skill["Desc"])
+            desc = re.sub(r'<\?(\d+)>', fmt_para_ex, skill["Desc"])
+        else:
+            desc = re.sub(r'<\?(\d+)>', fmt_para, skill["Desc"])
         desc = re.sub(r'<(\w):(\w+)>',fmt_desc,desc)
         skill_desc += "\n" + desc + "\n\n"
 
