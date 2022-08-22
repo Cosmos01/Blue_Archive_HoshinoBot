@@ -6,7 +6,7 @@ sv = hoshino.Service('ba_twitter', enable_on_default=False, visible=True, bundle
 
 async def get_tweets():
     try:
-        res = await aiorequests.get("http://ba.loli.codes:40000/ba_twitter.json",timeout=20)
+        res = await aiorequests.get("http://45.86.70.253:40000/ba_twitter.json",timeout=20)
         return res
     except:
         return None
