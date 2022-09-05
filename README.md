@@ -5,15 +5,16 @@
 
 日程参考项目：https://github.com/zyujs/pcr_calendar  
 承接该项目的抽卡功能并加入更新卡池功能：https://github.com/azmiao/bluearchive_hoshino_plugin.git  
+本想加入B站几位UP动态推送功能，但已经有bili-notice-hoshino、rss之类的推送插件，有需要可以另外安装。
 
 ![FYBN %B61EG``_OG~B8XZ$B](https://user-images.githubusercontent.com/37209685/165712652-5b221387-f0cc-41c2-9b6c-9b6b76063ed5.PNG)     
 
 ## 日程信息源
 日服新数据来源: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
-国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) (国际服更新速度可能比较慢)
+国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) 
 
 弃用：
-日服: [BiliWiki](https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5)    
+[BiliWiki](https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5)    
 
 
 
