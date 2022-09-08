@@ -36,9 +36,9 @@ def extract_calendar_data(server):
 
 
     if server == "jp":
-        data = get_item(common_data["regions"],"abbreviation","JPN")
+        data = common_data["regions"][0]
     else:
-        data = get_item(common_data["regions"], "abbreviation", "GLB")
+        data = common_data["regions"][1]
 
 
     #gacha
