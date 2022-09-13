@@ -42,9 +42,10 @@ async def get_raid_img(server = "日"):
             pageData = await resp.text()
         soup = BeautifulSoup(pageData, "html.parser")
         articleUrl = ""
-        for p in soup.find_all("p", "b-list__main__title is-highlight")[::-1]:
+        for p in soup.find_all("p", "b-list__main__title is-highlight"):
             if server in p.text:
                 articleUrl = "https://forum.gamer.com.tw/" + str(p.get("href"))
+                break
         #articleUrl = "https://forum.gamer.com.tw/" + str(soup.find("p", "b-list__main__title is-highlight").get("href"))
         if articleUrl == "":
             return ""
