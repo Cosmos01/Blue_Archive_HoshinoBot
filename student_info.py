@@ -117,16 +117,17 @@ def get_student_info(nickname):
     bullet_types = {"Explosion":"爆破","Pierce":"穿甲","Mystic":"神秘"}
     equipment_types = {"Gloves":"手套","Bag":"包","Watch":"手表","Shoes":"鞋","Badge":"徽章",
                        "Necklace":"项链","Hat":"帽子","Hairpin":"发卡","Charm":"饰品"}
+    armor_types = {"HeavyArmor":"重甲","LightArmor":"轻甲","Unarmed":"神秘甲"}
     equipments = ""
     for equipment in base_info["Equipment"]:
         equipments += (equipment_types[equipment] if equipment in equipment_types else equipment) + "、"
 
     adaptation = f'地形适应: 市街:{str(base_info["StreetBattleAdaptation"])} / 户外:{str(base_info["OutdoorBattleAdaptation"])} / 室内:{str(base_info["IndoorBattleAdaptation"])}\n'
     bullet_type = bullet_types[base_info["BulletType"]] if base_info["BulletType"] in bullet_types else base_info["BulletType"]
+    armor_type = armor_types[base_info["ArmorType"]] if base_info["ArmorType"] in armor_types else base_info["ArmorType"]
 
-
-    type = f'攻击类型:{bullet_type}\n武器类型:{base_info["WeaponType"]}\n位置:{base_info["Position"]}\n' \
-           f'装备:{equipments[:-1]}'
+    type = f'攻击类型: {bullet_type}\n护甲类型: {armor_type}\n武器类型: {base_info["WeaponType"]}\n位置: {base_info["Position"]}\n' \
+           f'装备: {equipments[:-1]}'
 
 
     msg_list.append(adaptation+type)
