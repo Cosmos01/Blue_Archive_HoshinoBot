@@ -7,7 +7,7 @@ import hoshino
 from hoshino import Service, priv, R, aiorequests
 from nonebot import on_command, get_bot, scheduler
 
-chara_path = path = os.path.join(os.path.dirname(__file__), 'gacha', '_ba_data.json')
+chara_path = os.path.join(os.path.dirname(__file__), 'gacha', '_ba_data.json')
 pool_path = os.path.join(os.path.dirname(__file__), 'gacha', 'config.json')
 
 chara_url = "https://raw.githubusercontent.com/Cosmos01/Blue_Archive_HoshinoBot/main/gacha/_ba_data.json"
