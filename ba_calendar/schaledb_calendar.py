@@ -53,8 +53,13 @@ def extract_calendar_data(server):
 
     #event
     for event in data["current_events"]:
+        event_rerun = ""
         event_id = event["event"]
-        event_name = localization_data["EventName"][str(event_id)]
+        # 复刻活动似乎是在原id前面加上10
+        if event_id > 1000:
+            event_id = str(event_id)[2:]
+            event_rerun = "(复刻)"
+        event_name = localization_data["EventName"][str(event_id)] + event_rerun
         start_time = datetime.datetime.fromtimestamp(event["start"]).strftime("%Y/%m/%d %H:%M")
         end_time = datetime.datetime.fromtimestamp(event["end"]).strftime("%Y/%m/%d %H:%M")
         event_list.append({'title': event_name, 'start': start_time, 'end': end_time})
