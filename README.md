@@ -11,14 +11,9 @@
   
 ![%B_DCGP$@6RG1OF@K0DS%9X](https://user-images.githubusercontent.com/37209685/189478012-e0bc9d86-cd12-44ad-8347-f7def6f773bc.png)
 
-## 日程信息源
-日服新数据来源: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
+## 信息源
+日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
 国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) ←这玩意儿经常改数据结构，获取不到了就来更新，没更新就提issues
-
-弃用：
-[BiliWiki](https://wiki.biligame.com/bluearchive/%E9%A6%96%E9%A1%B5)    
-
-
 
 ## 安装方法
 
@@ -50,10 +45,9 @@
 - `ba查询+角色名或昵称` : 查询角色信息  
 
 ## 注意事项  
-1. 修改角色表(_ba_data.json)文件时需要注意，数组第一位必需为DevName,否则自动获取图片无法使用，DevName见[SchaleDB](https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp/students.json)  
-2. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier,)
-3. 总力一图流可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)
-4. 之前的图片获取存在问题，如果安装了2022年8月10日前的版本，遇到问题可以删除资源文件'unit'中'icon_unit_1000.png'以外的图片，使用'ba更新卡池'指令更新。
+1. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier,)
+2. 总力一图流也可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)
+3. 之前的图片获取存在问题，如果安装了2022年8月10日前的版本，遇到问题可以删除资源文件'unit'中'icon_unit_1000.png'以外的图片，使用'ba更新卡池'指令更新。
 
 ## 鸣谢
-感谢沙雕群友提供的代码  
+感谢天上掉下来的代码(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)
