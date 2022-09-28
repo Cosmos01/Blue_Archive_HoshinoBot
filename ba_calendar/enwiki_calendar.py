@@ -66,15 +66,16 @@ def extract_calendar_data(html_text):
             print(e)
             pass
 
+       
     #updates
-    events = updates_div.find_all("ul")
+    events = updates_div.find_all("li")
     if len(events) > 0:
         for event in events:
             try:
                 event = BeautifulSoup(str(event), "html.parser")
                 if len(event.text.strip()) < 4:  #有时候会冒出奇奇怪怪的测试内容,过滤一下
                     continue
-                
+
                 if event.find("img"):  #带图片的一般是各种活动
                     event_name = ""
                     if event.find("a"):
@@ -83,38 +84,33 @@ def extract_calendar_data(html_text):
                     if event_name == "":
                         if event.find("a"):
                             event_name = event.find("a").get("title")
-                        elif event.find("li"):
-                            event_name = event.find("li").text
                         else:
                             event_name = event.text
                     event_list.append(fmt_event(event_name,event.text,type=1))
                 else:
-                    other_events = event.find_all("li")
-                    if len(other_events) > 0:
-                        for other_event in other_events:
-                            other_event = BeautifulSoup(str(other_event), "html.parser")
-                            if other_event.find("a") == None:  #排除测试项
-                                continue
+                    other_event = BeautifulSoup(str(event), "html.parser")
+                    if other_event.find("a") == None:  #排除测试项
+                        continue
+                    event_name = other_event.find("a").get("title")
+                    if "Exercise" in event_name:  #演习
+                        event_name = "演习"
+                        event_list.append(fmt_event(event_name,other_event.text))
+                        continue
+                    if event_name == "Missions":  #任务
+                        if "Normal" in other_event.text:
+                            event_name = "普通图掉落加倍"
+                        elif "Hard" in other_event.text:
+                            event_name = "困难图掉落加倍"
+                        event_list.append(fmt_event(event_name,other_event.text))
+                        continue
+                    if event_name not in dic:  #其他特殊活动
+                        page_url = other_event.find("a").get("href").strip()
+                        event_name = get_event_jp_name(page_url)
+                        if event_name == "":
                             event_name = other_event.find("a").get("title")
-                            if "Exercise" in event_name:  #演习
-                                event_name = "演习"
-                                event_list.append(fmt_event(event_name,other_event.text))
-                                continue
-                            if event_name == "Missions":  #任务
-                                if "Normal" in other_event.text:
-                                    event_name = "普通图掉落加倍"
-                                elif "Hard" in other_event.text:
-                                    event_name = "困难图掉落加倍"
-                                event_list.append(fmt_event(event_name,other_event.text))
-                                continue
-                            if event_name not in dic:  #其他特殊活动
-                                page_url = other_event.find("a").get("href").strip()
-                                event_name = get_event_jp_name(page_url)
-                                if event_name == "":
-                                    event_name = other_event.find("a").get("title")
-                                event_list.append(fmt_event(event_name,other_event.text,type=1))
-                                continue
-                            event_list.append(fmt_event(dic[event_name],other_event.text))
+                        event_list.append(fmt_event(event_name,other_event.text,type=1))
+                        continue
+                    event_list.append(fmt_event(dic[event_name],other_event.text))
             except Exception as e:
                 logging.warning(e)
                 continue
