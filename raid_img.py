@@ -35,10 +35,10 @@ from bs4 import BeautifulSoup
 # 实现方法：获取当前总力战top1的帖子的第二张图片。
 # todo: 如果总力攻略贴固定，可以整理出每个总力对应帖子的url来获取图片
 proxy = "" #仅http代理，示例：http://127.0.0.1:1080
-async def get_raid_img(server = "日"):
+async def get_raid_img(server="日"):
     try:
         bbs_url = "https://forum.gamer.com.tw/B.php?bsn=38898&qt=2&subbsn=14"
-        async with aiohttp.request('GET', url=bbs_url, allow_redirects=False,proxy=proxy) as resp:
+        async with aiohttp.request('GET', url=bbs_url, allow_redirects=False) as resp:
             pageData = await resp.text()
         soup = BeautifulSoup(pageData, "html.parser")
         articleUrl = ""
@@ -46,16 +46,33 @@ async def get_raid_img(server = "日"):
             if server in p.text:
                 articleUrl = "https://forum.gamer.com.tw/" + str(p.get("href"))
                 break
-        #articleUrl = "https://forum.gamer.com.tw/" + str(soup.find("p", "b-list__main__title is-highlight").get("href"))
+        # articleUrl = "https://forum.gamer.com.tw/" + str(soup.find("p", "b-list__main__title is-highlight").get("href"))
         if articleUrl == "":
             return ""
-        async with aiohttp.request('GET', url=articleUrl, allow_redirects=False,proxy=proxy) as resp:
+        async with aiohttp.request('GET', url=articleUrl, allow_redirects=False) as resp:
             article = await resp.text()
-        soup = BeautifulSoup(article, "html.parser")
-        image_url = soup.find_all("a", "photoswipe-image")[1].get("href")
-        async with aiohttp.request('GET', url=image_url, allow_redirects=False,proxy=proxy) as resp:
+        soup = BeautifulSoup(article, "html.parser").find("div", class_="c-post--manager")
+        # 多了一个攻略图
+        image_url1 = soup.find_all("a", "photoswipe-image")[1].get("href")
+        async with aiohttp.request('GET', url=image_url1, allow_redirects=False) as resp:
             image_data = await resp.read()
-        base64_str = f"base64://{base64.b64encode(image_data).decode()}"
+        img = Image.open(BytesIO(image_data)).convert("RGBA")
+        base64_str = img_gen(img)
+        # 原一图流（懒得改别的地方，强行拼接了）
+        image_url2 = soup.find_all("a", "photoswipe-image")[2].get("href")
+        async with aiohttp.request('GET', url=image_url2, allow_redirects=False) as resp:
+            image_data2 = await resp.read()
+        img = Image.open(BytesIO(image_data2)).convert("RGBA")
+        base64_str2 = img_gen(img)
+        base64_str = f"{base64_str}][CQ:image,file={base64_str2}"
+        # 两个服同时开的情况会有两个一图流
+        if len(soup.find_all("a", "photoswipe-image")) > 3:
+            image_url3 = soup.find_all("a", "photoswipe-image")[3].get("href")
+            async with aiohttp.request('GET', url=image_url3, allow_redirects=False) as resp:
+                image_data3 = await resp.read()
+            img = Image.open(BytesIO(image_data3)).convert("RGBA")
+            base64_str3 = img_gen(img)
+            base64_str = f"{base64_str}][CQ:image,file={base64_str3}"
         return base64_str
     except Exception as e:
         print(e)
