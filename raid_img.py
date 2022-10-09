@@ -31,6 +31,16 @@ import base64
 import aiohttp
 from bs4 import BeautifulSoup
 
+def img_gen(img):
+    width, height = img.size
+    draw = ImageDraw.Draw(img)
+    draw.point((int(width / 2.5), int(height / 2.5)))
+    buf = BytesIO()
+    img = img.convert('RGB')
+    img.save(buf, format='JPEG')
+    img = f'base64://{base64.b64encode(buf.getvalue()).decode()}'
+    return img
+
 # 从巴哈姆特论坛获取总力攻略图，获取方式比较粗糙，可能会取错帖子。
 # 实现方法：获取当前总力战top1的帖子的第二张图片。
 # todo: 如果总力攻略贴固定，可以整理出每个总力对应帖子的url来获取图片
