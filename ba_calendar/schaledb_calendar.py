@@ -79,10 +79,12 @@ def extract_calendar_data(server):
                 title = title + f'({raid["terrain"]})'
         #演习
         if raid_id > 999 and raid_id < 99999:
+            dungeon_types = {"Shooting": "射击", "Defense": "防御", "Destruction": "突破"}
             raid_info = get_item(raid_data["TimeAttack"], "Id", raid_id)
-            title = raid_info["NameJp"]
-            if raid_info["NameCn"] != None:
-                title = raid_info["NameCn"]
+            title = raid_info["DungeonType"]
+            if raid_info["DungeonType"] in dungeon_types:
+                title = dungeon_types[raid_info["DungeonType"]]
+            title += "演习"
             if "Terrain" in raid_info:
                 title = title + f'({raid_info["Terrain"]})'
         #世界boss
