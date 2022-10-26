@@ -7,7 +7,7 @@ import hoshino
 from hoshino import priv, R, aiorequests
 from nonebot import on_command, get_bot, scheduler
 
-# 配置代理，例：http://127.0.0.1:1080
+# 配置代理，例：{"http": "http://127.0.0.1:1080"}
 proxy = {"http": ""}
 
 chara_path = os.path.join(os.path.dirname(__file__), 'gacha', '_ba_data.json')
