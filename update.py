@@ -4,8 +4,10 @@ import os
 import re
 
 import hoshino
-from hoshino import Service, priv, R, aiorequests
+from hoshino import priv, R, aiorequests
 from nonebot import on_command, get_bot, scheduler
+
+proxy = {"https": "", "http": ""}
 
 chara_path = os.path.join(os.path.dirname(__file__), 'gacha', '_ba_data.json')
 pool_path = os.path.join(os.path.dirname(__file__), 'gacha', 'config.json')
@@ -16,7 +18,7 @@ student_jp_url = "https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/jp
 
 async def update_icon():
     try:
-        student_res = await aiorequests.get(student_jp_url, timeout=15)
+        student_res = await aiorequests.get(student_jp_url, timeout=15,proxies=proxy)
         students = await student_res.json()
         for student in students:
             if R.img(f'bluearchive/unit/icon_unit_{str(student["Id"])}.png').exist:
@@ -25,7 +27,7 @@ async def update_icon():
             CollectionTexture = student["CollectionTexture"]
             img = await aiorequests.get(
                 f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/{CollectionTexture}.png',
-                timeout=15)
+                timeout=15,proxies=proxy)
             img_save_path = os.path.abspath(
                 os.path.join(hoshino.config.RES_DIR, f'img/bluearchive/unit/icon_unit_{str(student["Id"])}.png'))
             img_cont = await img.content
@@ -36,8 +38,8 @@ async def update_icon():
 
 async def update():
     try:
-        chara_res = await aiorequests.get(chara_url,timeout=15)
-        pool_res = await aiorequests.get(pool_url,timeout=15)
+        chara_res = await aiorequests.get(chara_url,timeout=15,proxies=proxy)
+        pool_res = await aiorequests.get(pool_url,timeout=15,proxies=proxy)
         chara = await chara_res.json()
         pool = await pool_res.json()
         local_pool = json.load(open(pool_path,encoding="utf-8"))
