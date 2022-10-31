@@ -25,11 +25,28 @@ async def get_raid_img(server):
     return img
 
 
-# 以下为本地获取方案
+# 以下为本地获取方案,不能确保能够使用，可能需要修改
 '''
 import base64
 import aiohttp
 from bs4 import BeautifulSoup
+from selenium import webdriver
+
+UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36'
+mobileEmulation = {"userAgent":UA}
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('start-maximized')
+chrome_options.add_argument("--disable-extensions")
+chrome_options.add_argument('--disable-browser-side-navigation')
+chrome_options.add_argument('enable-automation')
+chrome_options.add_argument('--disable-infobars')
+chrome_options.add_argument('enable-features=NetworkServiceInProcess')
+chrome_options.add_experimental_option('mobileEmulation', mobileEmulation)
+
+driver = webdriver.Chrome(options=chrome_options)
 
 def img_gen(img):
     width, height = img.size
@@ -51,8 +68,8 @@ proxy = ""
 async def get_raid_img(server="日"):
     try:
         bbs_url = "https://forum.gamer.com.tw/B.php?bsn=38898&qt=2&subbsn=14"
-        async with aiohttp.request('GET', url=bbs_url, allow_redirects=False, proxy=proxy) as resp:
-            pageData = await resp.text()
+        driver.get(bbs_url)
+        pageData = driver.page_source
         soup = BeautifulSoup(pageData, "html.parser")
         articleUrl = ""
         for p in soup.find_all("p", "b-list__main__title is-highlight"):
@@ -62,8 +79,8 @@ async def get_raid_img(server="日"):
         # articleUrl = "https://forum.gamer.com.tw/" + str(soup.find("p", "b-list__main__title is-highlight").get("href"))
         if articleUrl == "":
             return ""
-        async with aiohttp.request('GET', url=articleUrl, allow_redirects=False, proxy=proxy) as resp:
-            article = await resp.text()
+        driver.get(articleUrl)
+        article = driver.page_source
         soup = BeautifulSoup(article, "html.parser").find("div", class_="c-post--manager")
         # 多了一个攻略图
         image_url1 = soup.find_all("a", "photoswipe-image")[1].get("href")
