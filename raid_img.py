@@ -89,12 +89,13 @@ async def get_raid_img(server="日"):
         img = Image.open(BytesIO(image_data)).convert("RGBA")
         base64_str = img_gen(img)
         # 原一图流（懒得改别的地方，强行拼接了）
-        image_url2 = soup.find_all("a", "photoswipe-image")[2].get("href")
-        async with aiohttp.request('GET', url=image_url2, allow_redirects=False, proxy=proxy) as resp:
-            image_data2 = await resp.read()
-        img = Image.open(BytesIO(image_data2)).convert("RGBA")
-        base64_str2 = img_gen(img)
-        base64_str = f"{base64_str}][CQ:image,file={base64_str2}"
+        if len(soup.find_all("a", "photoswipe-image")) > 2:
+            image_url2 = soup.find_all("a", "photoswipe-image")[2].get("href")
+            async with aiohttp.request('GET', url=image_url2, allow_redirects=False, proxy=proxy) as resp:
+                image_data2 = await resp.read()
+            img = Image.open(BytesIO(image_data2)).convert("RGBA")
+            base64_str2 = img_gen(img)
+            base64_str = f"{base64_str}][CQ:image,file={base64_str2}"
         # 两个服同时开的情况会有两个一图流
         if len(soup.find_all("a", "photoswipe-image")) > 3:
             image_url3 = soup.find_all("a", "photoswipe-image")[3].get("href")
