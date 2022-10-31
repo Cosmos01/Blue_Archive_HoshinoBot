@@ -46,8 +46,6 @@ chrome_options.add_argument('--disable-infobars')
 chrome_options.add_argument('enable-features=NetworkServiceInProcess')
 chrome_options.add_experimental_option('mobileEmulation', mobileEmulation)
 
-driver = webdriver.Chrome(options=chrome_options)
-
 def img_gen(img):
     width, height = img.size
     draw = ImageDraw.Draw(img)
@@ -66,6 +64,7 @@ def img_gen(img):
 proxy = "" 
 
 async def get_raid_img(server="日"):
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         bbs_url = "https://forum.gamer.com.tw/B.php?bsn=38898&qt=2&subbsn=14"
         driver.get(bbs_url)
@@ -78,6 +77,7 @@ async def get_raid_img(server="日"):
                 break
         # articleUrl = "https://forum.gamer.com.tw/" + str(soup.find("p", "b-list__main__title is-highlight").get("href"))
         if articleUrl == "":
+            driver.close()
             return ""
         driver.get(articleUrl)
         article = driver.page_source
@@ -103,9 +103,11 @@ async def get_raid_img(server="日"):
             img = Image.open(BytesIO(image_data3)).convert("RGBA")
             base64_str3 = img_gen(img)
             base64_str = f"{base64_str}][CQ:image,file={base64_str3}"
+        driver.close()
         return base64_str
     except Exception as e:
         print(e)
+        driver.close()
         return ""
         
 '''
