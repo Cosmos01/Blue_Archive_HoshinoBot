@@ -20,7 +20,7 @@
 1. 在HoshinoBot的插件目录modules下clone本项目 `git clone https://github.com/Cosmos01/Blue_Archive_HoshinoBot.git`
 2. 进入本项目目录运行 `pip install -r requirements.txt `安装必要的第三方库
 3. 在 `config/__bot__.py`的MODULES_ON列表里加入 `Blue_Archive_HoshinoBot`
-4. 将bluearchive文件夹移动到\HoshinoBot\res\img目录下
+4. 将bluearchive文件夹移动到HoshinoBot\res\img目录下
 5. 重启HoshinoBot
 
 部分模块默认是关闭状态，抽卡前请先更新卡池  
@@ -45,10 +45,10 @@
 - `ba查询+角色名或昵称` : 查询角色信息  
 
 ## 注意事项  
-1. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier,)
+1. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier)
 2. 总力一图流也可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)。由于巴哈姆特反爬加强，修改为selenium获取网页，需要配置selenium环境才能够使用。
 3. 部分地区更新卡池可能会因为网络问题报错，可以多试几次，或是在update.py内配置代理，见注释。
-4. 之前的图片获取存在问题，如果安装了2022年8月10日前的版本，遇到问题可以删除资源文件'unit'中'icon_unit_1000.png'以外的图片，使用'ba更新卡池'指令更新。
+4. 之前的图片获取存在问题，如果安装了2022年8月10日前的版本，遇到问题先更新版本，删除资源文件'unit'中'icon_unit_1000.png'以外的图片，使用'ba更新卡池'指令更新。
 
 ## 鸣谢
 感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)
