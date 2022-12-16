@@ -1,5 +1,3 @@
-#### 不知为何SchaleDB还没更新圣诞池，稍微等等吧
-
 # Blue_Archive_HoshinoBot
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询插件, 适用于 HoshinoBot v2.  
 
