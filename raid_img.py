@@ -104,11 +104,11 @@ async def get_raid_img(server="日"):
             img = Image.open(BytesIO(image_data3)).convert("RGBA")
             base64_str3 = img_gen(img)
             base64_str = f"{base64_str}][CQ:image,file={base64_str3}"
-        driver.close()
+        driver.quit()
         return base64_str
     except Exception as e:
         print(e)
-        driver.close()
+        driver.quit()
         return ""
         
 '''
