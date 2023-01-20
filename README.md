@@ -1,3 +1,5 @@
+## WDNMD服务器运营商说我搞事给我ban了，换了个服务器，更新了总力和推特获取的api地址。
+
 # Blue_Archive_HoshinoBot
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询插件, 适用于 HoshinoBot v2.  
 
