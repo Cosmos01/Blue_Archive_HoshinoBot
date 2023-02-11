@@ -4,7 +4,7 @@ from collections import defaultdict
 
 from hoshino import Service, priv, util
 from hoshino.typing import *
-from hoshino.util import DailyNumberLimiter, concat_pic, pic2b64, silence
+from hoshino.util import DailyNumberLimiter, concat_pic, pic2b64
 
 from . import chara
 from .gacha import Gacha
@@ -100,11 +100,9 @@ async def gacha_1(bot, ev: CQEvent):
     gid = str(ev.group_id)
     gacha = Gacha(_blue_group_pool[gid])
     chara, hiishi = gacha.gacha_one(gacha.up_prob, gacha.s3_prob, gacha.s2_prob)
-    silence_time = hiishi * 60
 
     res = f'{chara.icon.cqcode} {chara.name} {"★" * chara.star}'
 
-    await silence(ev, silence_time)
     await bot.send(ev, res, at_sender=True)
 
 
@@ -118,7 +116,6 @@ async def gacha_10(bot, ev: CQEvent):
     gid = str(ev.group_id)
     gacha = Gacha(_blue_group_pool[gid])
     result, hiishi = gacha.gacha_ten()
-    silence_time = hiishi * 6 if hiishi < SUPER_LUCKY_LINE else hiishi * 60
 
     res1 = chara.gen_team_pic(result[:5], star_slot_verbose=False)
     res2 = chara.gen_team_pic(result[5:], star_slot_verbose=False)
@@ -138,7 +135,6 @@ async def gacha_10(bot, ev: CQEvent):
     if hiishi >= SUPER_LUCKY_LINE:
         await bot.send(ev, '有狗！')
     await bot.send(ev, f'{res}\n', at_sender=True)
-    await silence(ev, silence_time)
 
 
 @sv.on_fullmatch("ba来一井")
@@ -200,8 +196,6 @@ async def gacha_200(bot, ev: CQEvent):
         msg.append("UP角色一大堆！您是托吧？")
 
     await bot.send(ev, '\n'.join(msg), at_sender=True)
-    silence_time = (100 * up + 50 * (up + s3) + 10 * s2 + s1) * 1
-    await silence(ev, silence_time)
 
 
 @sv.on_prefix('ba氪金')
