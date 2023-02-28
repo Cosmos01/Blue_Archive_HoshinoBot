@@ -165,6 +165,8 @@ def get_student_info(nickname):
     skill_desc = ""
     skills = base_info["Skills"]
     for skill in skills:
+        if "Name" not in skill:
+            continue
         skill_desc += skill["SkillType"] + "\n"
         skill_desc += skill["Name"]
         parameters = skill["Parameters"]
