@@ -3,7 +3,7 @@ import requests
 
 common = "https://lonqie.github.io/SchaleDB/data/common.json"
 localization = "https://lonqie.github.io/SchaleDB/data/cn/localization.json"
-raids = "https://lonqie.github.io/SchaleDB/data/raids.min.json"
+raids = "https://lonqie.github.io/SchaleDB/data/cn/raids.min.json"
 student_cn = "https://lonqie.github.io/SchaleDB/data/cn/students.min.json"
 student_jp = "https://lonqie.github.io/SchaleDB/data/jp/students.min.json"
 
@@ -71,15 +71,12 @@ def extract_calendar_data(server):
         #总力
         if raid_id < 999:
             raid_info = get_item(raid_data["Raid"], "Id", raid_id)
-            if raid_info["NameCn"] != None:
-                title = "总力战: " + raid_info["NameCn"]
-            else:
-                title = "总力战: " + raid_info["NameJp"] + f'({raid_info["PathName"]})'
+            title = "总力战: " + raid_info["Name"]
             if "terrain" in raid:
                 title = title + f'({raid["terrain"]})'
         #演习
         if raid_id > 999 and raid_id < 99999:
-            dungeon_types = {"Shooting": "射击", "Defense": "防御", "Destruction": "突破"}
+            dungeon_types = {"Shooting":"射击","Defense":"防御","Destruction":"突破"}
             raid_info = get_item(raid_data["TimeAttack"], "Id", raid_id)
             title = raid_info["DungeonType"]
             if raid_info["DungeonType"] in dungeon_types:
@@ -90,9 +87,7 @@ def extract_calendar_data(server):
         #世界boss
         if raid_id > 800000 and raid_id < 900000:
             raid_info = get_item(raid_data["WorldRaid"], "Id", raid_id)
-            title = raid_info["NameJp"]
-            if raid_info["NameCn"] != None:
-                title = raid_info["NameCn"]
+            title = raid_info["Name"]
 
         if title != "":
             start_time = datetime.datetime.fromtimestamp(raid["start"]).strftime("%Y/%m/%d %H:%M")
