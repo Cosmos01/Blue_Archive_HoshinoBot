@@ -3,7 +3,6 @@ import json
 import os
 import re
 import time
-
 import requests
 from hoshino import R
 
@@ -67,12 +66,59 @@ def fmt_para_ex(match):
     str = f'{parameters[int(match.group(1)) - 1][0]}({parameters[int(match.group(1)) - 1][4]})'
     return str
 
+
+def get_student_list():
+    msg_list = []
+    student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
+    for student_id,student_names in student_list.items():
+        if student_id == "1000":
+            continue
+        # 头像
+        res = ""
+        img_path = R.img(f'bluearchive/unit/icon_unit_{str(student_id)}.png')
+        if not img_path.exist:
+            try:
+                r = requests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/unit/icon_unit_{str(student_id)}.png',timeout=15)
+                if r.status_code == 200:
+                    img = r.content
+                    with open(img_path.path, 'wb') as f:
+                        f.write(img)
+                    base64_str = f"base64://{base64.b64encode(img).decode()}"
+                    res = f"[CQ:image,file={base64_str}]"
+                else:
+                    res = R.img(f'bluearchive/unit/icon_unit_1000.png').cqcode
+            except:
+                res = R.img(f'bluearchive/unit/icon_unit_1000.png').cqcode
+        else:
+            res = img_path.cqcode
+
+        # 名字
+        names = ""
+        for name in student_list[str(student_id)]:
+            names += name + "、"
+        res = res + "\n" + names[:-1]
+        msg_list.append(res)
+
+    forward_msg = []
+    for msg in msg_list:
+        forward_msg.append({
+        "type": "node",
+        "data": {
+            "name": "小冰",
+            "uin": "2854196306",
+            "content": msg
+        }
+    })
+    return forward_msg
+
+
+
 def get_student_info(nickname):
 
     student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
     student_id = int(get_student_id(student_list,nickname))
     if student_id == None:
-        return None
+        return ["未找到该角色,使用”ba角色列表“命令查看所有角色"]
 
     global localization_cn_data
     common_data = get_json_data(common_url)
@@ -80,7 +126,7 @@ def get_student_info(nickname):
     localization_cn_data = get_json_data(localization_cn_url)
     localization_jp_data = get_json_data(localization_jp_url)
     if common_data == None or student_data == None or localization_cn_data == None or localization_jp_data == None:
-        return
+        return ["获取数据失败"]
 
     msg_list = []
 
@@ -216,6 +262,7 @@ def get_student_info(nickname):
         except Exception as e:
             msg_list.append(f'角评图片获取失败: {e}')
             pass
+
 
 
     forward_msg = []
