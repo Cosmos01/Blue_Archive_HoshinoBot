@@ -3,7 +3,7 @@
 
 项目地址 https://github.com/Cosmos01/Blue_Archive_HoshinoBot    
 
-### 2023年3月14日 增加夜猫的角色评价图，如果嫌包太大只要更新student_info.py文件即可  
+### 2023年3月14日 增加夜猫的角色评价图，如果嫌包太大只要更新student_info.py、calendar.py文件即可  
 
 日程参考项目：https://github.com/zyujs/pcr_calendar  
 承接该项目的抽卡功能并加入更新卡池功能：https://github.com/azmiao/bluearchive_hoshino_plugin.git  
