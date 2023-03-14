@@ -14,6 +14,7 @@
 ## 信息源
 日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
 国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) ←这玩意儿经常改数据结构，获取不到了就来更新，没更新就提issues
+角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)
 
 ## 安装方法
 
@@ -42,7 +43,7 @@
 - `ba来一井\ba十连\ba单抽` : 模拟抽卡
 - `ba更新卡池` : 自动更新角色列表、卡池、资源文件。由于SchaleDB似乎没有提前更新的习惯，一般会在当晚更新卡池，最迟第二天早上。
 - `ba氪金+@目标` : 恢复抽卡次数，可@多个目标
-- `ba查询+角色名或昵称` : 查询角色信息  
+- `ba查询+角色名或昵称` : 查询角色信息，含角色评价  
 
 ## 注意事项  
 1. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier)
