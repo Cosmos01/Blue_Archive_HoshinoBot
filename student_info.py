@@ -2,15 +2,16 @@ import base64
 import json
 import os
 import re
+import time
 
 import requests
 from hoshino import R
 
-
-students_url = "https://lonqie.github.io/SchaleDB/data/cn/students.json"
-localization_cn_url = "https://lonqie.github.io/SchaleDB/data/cn/localization.json"
-localization_jp_url = "https://lonqie.github.io/SchaleDB/data/jp/localization.json"
-common_url = "https://lonqie.github.io/SchaleDB/data/common.json"
+base_url = "http://91.149.236.232:40000/"
+students_url = base_url + "/SchaleDB/data/cn/students.json"
+localization_cn_url = base_url + "/SchaleDB/data/cn/localization.json"
+localization_jp_url = base_url + "/SchaleDB/data/jp/localization.json"
+common_url = base_url + "/SchaleDB/data/common.json"
 
 localization_cn_data = {}
 
@@ -89,7 +90,7 @@ def get_student_info(nickname):
     res = R.img(f'bluearchive/unit/icon_unit_{str(student_id)}.png')
     if not res.exist:
         try:
-            img = requests.get(f'https://raw.githubusercontent.com/lonqie/SchaleDB/main/images/student/icon/{base_info["CollectionTexture"]}.png',timeout=15).content
+            img = requests.get(f'{base_url}/SchaleDB/images/student/icon/{base_info["CollectionTexture"]}.png',timeout=15).content
             base64_str = f"base64://{base64.b64encode(img).decode()}"
             res = f"[CQ:image,file={base64_str}]"
         except:
@@ -179,6 +180,43 @@ def get_student_info(nickname):
         skill_desc += "\n" + desc + "\n\n"
 
     msg_list.append(skill_desc)
+
+    #角评
+    img = R.img(f'bluearchive/info/info_{str(student_id)}.png')
+    if not img.exist:
+        if not R.img(f'bluearchive/info/').exist:
+            os.mkdir(R.img(f'bluearchive/info/').path)
+        print("正在获取角评图片："+str(student_id))
+        try:
+            r = requests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+            if r.status_code == 200:
+                with open(img.path, 'wb') as f:
+                    f.write(r.content)
+                base64_str = f"base64://{base64.b64encode(r.content).decode()}"
+                res = f"[CQ:image,file={base64_str}]"
+                msg_list.append(res)
+            elif r.status_code == 404:
+                msg_list.append(f'角评图片不存在')
+        except Exception as e:
+            msg_list.append(f'角评图片获取失败: {e}')
+            pass
+    else:
+        msg_list.append(img.cqcode)
+        try:
+            r = requests.head(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+            if "Last-Modified" in r.headers:
+                last = r.headers.get("Last-Modified")
+                if os.path.getmtime(img.path) < time.mktime(time.strptime(last, "%a, %d %b %Y %H:%M:%S GMT")) + 8 * 60 * 60:
+                    r = requests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+                    if r.status_code == 200:
+                        with open(img.path, 'wb') as f:
+                            f.write(r.content)
+            else:
+                msg_list.append(f'角评图片更新出错: Last-Modified不存在')
+        except Exception as e:
+            msg_list.append(f'角评图片获取失败: {e}')
+            pass
+
 
     forward_msg = []
     for msg in msg_list:
