@@ -99,17 +99,7 @@ def get_student_list():
         res = res + "\n" + names[:-1]
         msg_list.append(res)
 
-    forward_msg = []
-    for msg in msg_list:
-        forward_msg.append({
-        "type": "node",
-        "data": {
-            "name": "小冰",
-            "uin": "2854196306",
-            "content": msg
-        }
-    })
-    return forward_msg
+    return msg_list
 
 
 
@@ -265,19 +255,7 @@ def get_student_info(nickname):
             pass
 
 
-
-    forward_msg = []
-    for msg in msg_list:
-        forward_msg.append({
-        "type": "node",
-        "data": {
-            "name": "小冰",
-            "uin": "2854196306",
-            "content": msg
-        }
-    })
-
-    return forward_msg
+    return msg_list
 
 
 if __name__ == '__main__':
