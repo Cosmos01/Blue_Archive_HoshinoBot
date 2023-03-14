@@ -165,17 +165,37 @@ async def send_student_info(bot, ev):
     nickname = ev.message.extract_plain_text()
     msgs = get_student_info(nickname)
     if msgs == None:
-        await bot.send(ev, "获取角色信息失败,请检查角色是否存在,或提交补充角色昵称")
+        await bot.send(ev, "获取角色信息失败")
         return
-    await bot.send_group_forward_msg(group_id=ev.group_id,messages=msgs)
-    
+    forward_msg = []
+    for msg in msgs:
+        forward_msg.append({
+        "type": "node",
+        "data": {
+            "name": "小冰",
+            "uin": "2854196306",
+            "content": msg
+        }
+    })
+    await bot.send_group_forward_msg(group_id=ev.group_id, messages=forward_msg)
+
 @sv.on_fullmatch('ba角色列表')
 async def send_student_list(bot, ev):
     msgs = get_student_list()
     if msgs == None:
         await bot.send(ev, "获取角色列表失败")
         return
-    await bot.send_group_forward_msg(group_id=ev.group_id, messages=msgs)
+    forward_msg = []
+    for msg in msgs:
+        forward_msg.append({
+            "type": "node",
+            "data": {
+                "name": "小冰",
+                "uin": "2854196306",
+                "content": msg
+            }
+        })
+    await bot.send_group_forward_msg(group_id=ev.group_id, messages=forward_msg)
     
     
 @nonebot.on_startup
