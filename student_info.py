@@ -108,7 +108,7 @@ def get_student_info(nickname):
     student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
     student_id = get_student_id(student_list,nickname)
     if student_id == None:
-        return ["未找到该角色,使用”ba角色列表“命令查看所有角色"]
+        return ["未找到该角色,使用“ba角色列表”命令查看所有角色"]
     student_id = int(student_id)
 
     global localization_cn_data
