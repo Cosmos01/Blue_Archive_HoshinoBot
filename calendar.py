@@ -6,7 +6,7 @@ import nonebot
 import os
 import re
 import traceback
-from .student_info import get_student_info
+from .student_info import get_student_info, get_student_list
 
 HELP_STR = '''
 碧蓝档案活动日历
@@ -16,6 +16,8 @@ ba[日]服日历 on/off : 订阅/取消订阅指定服务器的日历推送
 ba日历 time 时:分 : 设置日历推送时间
 ba日历 status : 查看本群日历推送设置
 [日国國美台]?[际際]?[服]?总力一图流 : 查看当前总力一图流,服务器名为空时默认日服
+ba角色列表 : 查看所有角色头像和昵称
+ba查询+角色名或昵称 : 获取角色信息
 '''.strip()
 
 sv = hoshino.Service('ba_calendar',enable_on_default=False, help_=HELP_STR, bundle='ba查询')
@@ -166,7 +168,15 @@ async def send_student_info(bot, ev):
         await bot.send(ev, "获取角色信息失败,请检查角色是否存在,或提交补充角色昵称")
         return
     await bot.send_group_forward_msg(group_id=ev.group_id,messages=msgs)
-
+    
+@sv.on_fullmatch('ba角色列表')
+async def send_student_list(bot, ev):
+    msgs = get_student_list()
+    if msgs == None:
+        await bot.send(ev, "获取角色列表失败")
+        return
+    await bot.send_group_forward_msg(group_id=ev.group_id, messages=msgs)
+    
     
 @nonebot.on_startup
 async def startup():
