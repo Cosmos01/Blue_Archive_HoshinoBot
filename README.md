@@ -1,3 +1,6 @@
+# 增加夜猫的角色评价图，如果嫌包太大只要更新student_info.py文件即可
+
+
 # Blue_Archive_HoshinoBot
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询插件, 适用于 HoshinoBot v2.  
 
