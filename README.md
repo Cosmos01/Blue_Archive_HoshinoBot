@@ -1,4 +1,4 @@
-# 增加夜猫的角色评价图，如果嫌包太大只要更新student_info.py文件即可
+### 增加夜猫的角色评价图，如果嫌包太大只要更新student_info.py文件即可
 
 
 # Blue_Archive_HoshinoBot
