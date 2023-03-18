@@ -2,9 +2,6 @@
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询插件, 适用于 HoshinoBot v2.  
 
 项目地址 https://github.com/Cosmos01/Blue_Archive_HoshinoBot    
-
-### 2023年3月14日 增加夜猫的角色评价图，如果嫌包太大只要更新student_info.py、calendar.py文件即可
-### 2023年3月17日 受不明原因影响，近期推特获取不稳定，正在排查原因
   
 
 日程参考项目：https://github.com/zyujs/pcr_calendar  
