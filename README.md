@@ -14,7 +14,7 @@
 
 ## 信息源
 日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
-国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) ←这玩意儿经常改数据结构，获取不到了就来更新，没更新就提issues
+国际服：[SchaleDB](https://lonqie.github.io/SchaleDB/) ←这玩意儿经常改数据结构，获取不到了就来更新，没更新就提issues  
 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)
 
 ## 安装方法
