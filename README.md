@@ -48,7 +48,7 @@
 - `ba查询+角色名或昵称` : 查询角色信息，含角色评价  
 
 ## 注意事项  
-1. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twtter-template.json改名为twtter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier)
+1. 如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twitter-template.json改名为twitter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier)
 2. 总力一图流也可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)。由于巴哈姆特反爬加强，修改为selenium获取网页，需要配置selenium环境才能够使用。
 
 ## 鸣谢
