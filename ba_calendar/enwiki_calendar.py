@@ -9,8 +9,11 @@ dic = {"Schedule": "スケジュール掉落加倍", "School Exchange": "学园�
 
 def fmt_event(event_name,event_text,type=0):
     year = datetime.datetime.now().strftime('%Y')
-    event_text = event_text.replace(" "," ") #wdnmd
-    event_time = re.findall(r"(\d+/\d+) - (\d+/\d+)", event_text)[0]
+    event_text = event_text.replace(" ", " ").replace(" "," ")  # wdnmd
+    event_time = re.findall(r"(\d+/\d+) - (\d+/\d+)", event_text)
+    if len(event_time) == 0:
+        return {'title': event_name, 'start': '2021/03/22 17:00', 'end': '2021/04/05 10:00'}
+    event_time = event_time[0]
     if type == 1:
         start_time = year + "/" + event_time[0] + " 17:00"
         end_time = year + "/" + event_time[1] + " 10:00"
