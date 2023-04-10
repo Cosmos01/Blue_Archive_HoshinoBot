@@ -78,13 +78,15 @@ def update_group_schedule(group_id):
         minute = group_data[group_id]['minute']
         )
 
-@sv.on_rex(r'^ba([日国台韩美])?[际際]?服?日[历程](.*)')
+@sv.on_rex(r'^ba([db日国际台韩美]){3}?[际際]?服?日[历程](.*)')
 async def start_scheduled(bot, ev):
     group_id = str(ev['group_id'])
     server_name = ev['match'].group(1)
     if server_name == '日':
         server = 'jp'
-    elif server_name in ["国","台","韩","美"]:
+    elif server_name == 'db日':
+        server = 'db-jp'
+    elif server_name in ["国际", "台", "韩", "美"]:
         server = 'global'
     elif group_id in group_data and len(group_data[group_id]['server_list']) > 0:
         server = group_data[group_id]['server_list'][0]
