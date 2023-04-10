@@ -78,7 +78,7 @@ def update_group_schedule(group_id):
         minute = group_data[group_id]['minute']
         )
 
-@sv.on_rex(r'^ba([db日国际台韩美]){3}?[际際]?服?日[历程](.*)')
+@sv.on_rex(r'^ba([db日国际台韩美]{1,3})?[际際]?服?日[历程](.*)')
 async def start_scheduled(bot, ev):
     group_id = str(ev['group_id'])
     server_name = ev['match'].group(1)
