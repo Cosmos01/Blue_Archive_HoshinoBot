@@ -1,4 +1,4 @@
-# 日服wiki好像炸了，应该短期会恢复
+# 日服wiki好像炸了，应该短期会恢复,新增了schaleDB获取日服日历
 
 
 # Blue_Archive_HoshinoBot
@@ -16,7 +16,7 @@
 ![%B_DCGP$@6RG1OF@K0DS%9X](https://user-images.githubusercontent.com/37209685/189478012-e0bc9d86-cd12-44ad-8347-f7def6f773bc.png)
 
 ## 信息源
-日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
+日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)、[SchaleDB](https://lonqie.github.io/SchaleDB/)
 国际服日历以及所有角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/) ←该项目经常改数据结构，获取不到了就来更新，没更新就提issues  
 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)
 
@@ -32,14 +32,14 @@
 使用bot指令开启功能：  
 - `启用 ba_calendar`
 - `启用 ba_twitter`(如果修改了代码为本地获取，请确认已经填写好密钥并修改配置文件名再开启)  
-- `ba日(国际、台、韩、美)服日历 on`(必要)
+- `ba(日,db日,国际、台、韩、美)服日历 on`(必要)
 - `ba更新卡池` 
 
 
 ## 指令列表
 - `ba日历` : 查看本群订阅服务器日历，需要先订阅(见第三条)，服务器取第一位，需要调整顺序可以先off掉其他服
-- `ba日(国际、台、韩、美)服日历` : 查看指定服务器日程
-- `ba日(国际、台、韩、美)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
+- `ba(日、db日、国际、台、韩、美)服日历` : 查看指定服务器日程，db日服日历是schaleDB获取的。
+- `ba(日、db日、国际、台、韩、美)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
 - `ba日历 time 时:分` : 设置日历推送时间
 - `ba日历 status` : 查看本群日历推送设置
 - `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片
