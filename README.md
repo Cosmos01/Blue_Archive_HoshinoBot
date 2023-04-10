@@ -1,4 +1,4 @@
-# 日服wiki好像炸了，应该短期会恢复,新增了schaleDB获取日服日历
+# 日服wiki好像炸了，应该短期会恢复，新增了schaleDB获取日服日历，可以先用这个
 
 
 # Blue_Archive_HoshinoBot
@@ -16,7 +16,7 @@
 ![%B_DCGP$@6RG1OF@K0DS%9X](https://user-images.githubusercontent.com/37209685/189478012-e0bc9d86-cd12-44ad-8347-f7def6f773bc.png)
 
 ## 信息源
-日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)、[SchaleDB](https://lonqie.github.io/SchaleDB/)
+日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)、[SchaleDB](https://lonqie.github.io/SchaleDB/)  
 国际服日历以及所有角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/) ←该项目经常改数据结构，获取不到了就来更新，没更新就提issues  
 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)
 
