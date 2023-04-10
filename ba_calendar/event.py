@@ -13,16 +13,19 @@ from .biliwiki_calendar import transform_biliwiki_calendar
 
 event_data = {
     'jp': [],
+    'db-jp': [],
     'global': [],
 }
 
 event_updated = {
     'jp': '',
-    'global':''
+    'db-jp': [],
+    'global': ''
 }
 
 lock = {
     'jp': asyncio.Lock(),
+    'db-jp': asyncio.Lock(),
     'global': asyncio.Lock(),
 }
 
@@ -65,6 +68,7 @@ async def load_event_enwiki():
         return 0
     return 1
 
+
 async def load_event_schaledb(server):
     data = ''
     try:
@@ -77,7 +81,7 @@ async def load_event_schaledb(server):
         return 1
     if data:
         if server == "jp":
-            event_data['jp'] = []
+            event_data['db-jp'] = []
         else:
             event_data['global'] = []
         for item in data:
@@ -89,17 +93,20 @@ async def load_event_schaledb(server):
             elif '总力战' in event['title'] or '演习' in event['title'] or '演習' in event['title']:
                 event['type'] = 3
             if server == "jp":
-                event_data['jp'].append(event)
+                event_data['db-jp'].append(event)
             else:
                 event_data['global'].append(event)
         return 0
     return 1
 
+
 async def load_event(server):
     if server == 'jp':
         return await load_event_enwiki()
-        #return await load_event_schaledb("jp")
-    if server != 'jp':  #反正就俩服
+        # return await load_event_schaledb("jp")
+    elif server == 'db-jp':
+        return await load_event_schaledb("jp")
+    else:
         return await load_event_schaledb("global")
     return 1
 
