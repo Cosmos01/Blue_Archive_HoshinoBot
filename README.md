@@ -1,4 +1,4 @@
-# 日服wiki好像炸了，应该短期会恢复，新增了schaleDB获取日服日历，可以先用这个
+# 新增了schaleDB获取日服日历，gamekee wiki好像做的不错，后续有空看看
 
 
 # Blue_Archive_HoshinoBot
