@@ -1,4 +1,4 @@
-# 新增了schaleDB获取日服日历，gamekee wiki好像做的不错，后续有空看看
+### 新增了schaleDB获取日服日历，gamekee wiki好像做的不错，后续有空看看
 
 
 # Blue_Archive_HoshinoBot
