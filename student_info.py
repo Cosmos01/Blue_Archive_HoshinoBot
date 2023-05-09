@@ -3,8 +3,9 @@ import json
 import os
 import re
 import time
-import requests
 from hoshino import R
+from hoshino import aiorequests
+
 
 base_url = "http://91.149.236.232:40000/"
 students_url = base_url + "/SchaleDB/data/cn/students.json"
@@ -26,12 +27,13 @@ def get_student_id(student_list,nickname):
             return student_id
     return None
 
-def get_json_data(url):
+async def get_json_data(url):
     for i in range(3):
         try:
-            res = requests.get(url,timeout=15)
+            res = await aiorequests.get(url,timeout=15)
             if res.status_code == 200:
-                return res.json()
+                res = await res.json()
+                return res
         except:
             continue
     return None
@@ -67,7 +69,7 @@ def fmt_para_ex(match):
     return str
 
 
-def get_student_list():
+async def get_student_list():
     msg_list = []
     student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
     for student_id,student_names in student_list.items():
@@ -78,12 +80,12 @@ def get_student_list():
         img_path = R.img(f'bluearchive/unit/icon_unit_{str(student_id)}.png')
         if not img_path.exist:
             try:
-                r = requests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/unit/icon_unit_{str(student_id)}.png',timeout=15)
+                r = await aiorequests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/unit/icon_unit_{str(student_id)}.png',timeout=15)
+                content = await r.content
                 if r.status_code == 200:
-                    img = r.content
                     with open(img_path.path, 'wb') as f:
-                        f.write(img)
-                    base64_str = f"base64://{base64.b64encode(img).decode()}"
+                        f.write(content)
+                    base64_str = f"base64://{base64.b64encode(content).decode()}"
                     res = f"[CQ:image,file={base64_str}]"
                 else:
                     res = R.img(f'bluearchive/unit/icon_unit_1000.png').cqcode
@@ -103,7 +105,7 @@ def get_student_list():
 
 
 
-def get_student_info(nickname):
+async def get_student_info(nickname):
 
     student_list = json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'),encoding="utf-8"))["CHARA_NAME"]
     student_id = get_student_id(student_list,nickname)
@@ -112,10 +114,10 @@ def get_student_info(nickname):
     student_id = int(student_id)
 
     global localization_cn_data
-    common_data = get_json_data(common_url)
-    student_data = get_json_data(students_url)
-    localization_cn_data = get_json_data(localization_cn_url)
-    localization_jp_data = get_json_data(localization_jp_url)
+    common_data = await get_json_data(common_url)
+    student_data = await get_json_data(students_url)
+    localization_cn_data = await get_json_data(localization_cn_url)
+    localization_jp_data = await get_json_data(localization_jp_url)
     if common_data == None or student_data == None or localization_cn_data == None or localization_jp_data == None:
         return ["获取数据失败"]
 
@@ -127,8 +129,9 @@ def get_student_info(nickname):
     res = R.img(f'bluearchive/unit/icon_unit_{str(student_id)}.png')
     if not res.exist:
         try:
-            img = requests.get(f'{base_url}/SchaleDB/images/student/icon/{base_info["CollectionTexture"]}.png',timeout=15).content
-            base64_str = f"base64://{base64.b64encode(img).decode()}"
+            img = await aiorequests.get(f'{base_url}/SchaleDB/images/student/icon/{base_info["CollectionTexture"]}.png',timeout=15)
+            content = await img.content
+            base64_str = f"base64://{base64.b64encode(content).decode()}"
             res = f"[CQ:image,file={base64_str}]"
         except:
             res = R.img(f'bluearchive/unit/icon_unit_1000.png').cqcode
@@ -225,11 +228,12 @@ def get_student_info(nickname):
             os.mkdir(R.img(f'bluearchive/info/').path)
         print("正在获取角评图片："+str(student_id))
         try:
-            r = requests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+            r = await aiorequests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+            content = await r.content
             if r.status_code == 200:
                 with open(img.path, 'wb') as f:
-                    f.write(r.content)
-                base64_str = f"base64://{base64.b64encode(r.content).decode()}"
+                    f.write(content)
+                base64_str = f"base64://{base64.b64encode(content).decode()}"
                 res = f"[CQ:image,file={base64_str}]"
                 msg_list.append(res)
             elif r.status_code == 404:
@@ -240,14 +244,15 @@ def get_student_info(nickname):
     else:
         msg_list.append(img.cqcode)
         try:
-            r = requests.head(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+            r = await aiorequests.head(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
             if "Last-Modified" in r.headers:
                 last = r.headers.get("Last-Modified")
                 if os.path.getmtime(img.path) < time.mktime(time.strptime(last, "%a, %d %b %Y %H:%M:%S GMT")) + 8 * 60 * 60:
-                    r = requests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+                    r = await aiorequests.get(f'{base_url}/Blue_Archive_HoshinoBot/bluearchive/info/info_{str(student_id)}.png', timeout=20)
+                    content = await r.content
                     if r.status_code == 200:
                         with open(img.path, 'wb') as f:
-                            f.write(r.content)
+                            f.write(content)
             else:
                 msg_list.append(f'角评图片更新出错: Last-Modified不存在')
         except Exception as e:
@@ -256,7 +261,3 @@ def get_student_info(nickname):
 
 
     return msg_list
-
-
-if __name__ == '__main__':
-    print(get_student_info("美咲"))
