@@ -169,7 +169,7 @@ async def raid_img(bot, ev):
 @sv.on_prefix('ba查询')
 async def send_student_info(bot, ev):
     nickname = ev.message.extract_plain_text()
-    msgs = get_student_info(nickname)
+    msgs = await get_student_info(nickname)
     if msgs == None:
         await bot.send(ev, "获取角色信息失败")
         return
