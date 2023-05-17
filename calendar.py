@@ -187,7 +187,7 @@ async def send_student_info(bot, ev):
 
 @sv.on_fullmatch('ba角色列表')
 async def send_student_list(bot, ev):
-    msgs = get_student_list()
+    msgs = await get_student_list()
     if msgs == None:
         await bot.send(ev, "获取角色列表失败")
         return
