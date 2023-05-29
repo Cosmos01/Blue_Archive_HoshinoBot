@@ -55,18 +55,28 @@ def fmt_desc(match):
 parameters = []
 
 def fmt_para(match):
-    global parameters
-    if parameters == []:
-        return "UNKNOW"
-    str = f'{parameters[int(match.group(1))-1][0]}({parameters[int(match.group(1))-1][-1]})'
-    return str
+    str = "UNKNOW"
+    try:
+        global parameters
+        if parameters == []:
+            return str
+        str = f'{parameters[int(match.group(1))-1][0]}({parameters[int(match.group(1))-1][-1]})'
+        return str
+    except Exception as e:
+        print(e)
+        return str
 
 def fmt_para_ex(match):
-    global parameters
-    if parameters == []:
-        return "UNKNOW"
-    str = f'{parameters[int(match.group(1)) - 1][0]}({parameters[int(match.group(1)) - 1][4]})'
-    return str
+    str = "UNKNOW"
+    try:
+        global parameters
+        if parameters == []:
+            return str
+        str = f'{parameters[int(match.group(1)) - 1][0]}({parameters[int(match.group(1)) - 1][4]})'
+        return str
+    except Exception as e:
+        print(e)
+        return str
 
 
 async def get_student_list():
