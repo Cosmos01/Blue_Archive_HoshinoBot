@@ -1,32 +1,40 @@
 import os
 import json
 import datetime
+import time
+
 import aiohttp
 import asyncio
 import math
-
 from .enwiki_calendar import transform_enwiki_calendar
 from .schaledb_calendar import transform_schaledb_calendar
 from .biliwiki_calendar import transform_biliwiki_calendar
+from .gamekee_calendar import transform_gamekee_calendar
 
 # type 0普通 1 活动 2双倍 3 总力战
 
 event_data = {
     'jp': [],
-    'db-jp': [],
     'global': [],
+    'en-jp': [],
+    'db-jp': [],
+    'db-global': [],
 }
 
 event_updated = {
     'jp': '',
-    'db-jp': [],
-    'global': ''
+    'global': '',
+    'en-jp': '',
+    'db-jp': '',
+    'db-global': ''
 }
 
 lock = {
     'jp': asyncio.Lock(),
-    'db-jp': asyncio.Lock(),
     'global': asyncio.Lock(),
+    'en-jp': asyncio.Lock(),
+    'db-jp': asyncio.Lock(),
+    'db-global': asyncio.Lock(),
 }
 
 
@@ -55,16 +63,16 @@ async def load_event_enwiki():
         print('解析B站日程表失败')
         return 1
     if data:
-        event_data['jp'] = []
+        event_data['en-jp'] = []
         for item in data:
             start_time = datetime.datetime.strptime(item['start'], r"%Y/%m/%d %H:%M")
             end_time = datetime.datetime.strptime(item['end'], r"%Y/%m/%d %H:%M")
             event = {'title': item['title'], 'start': start_time, 'end': end_time, 'type': 1}
             if '倍' in event['title']:
                 event['type'] = 2
-            elif '总力战' in event['title'] or '演习' in event['title'] or '演習' in event['title']:
+            elif '总力' in event['title'] or '演习' in event['title'] or '演習' in event['title']:
                 event['type'] = 3
-            event_data['jp'].append(event)
+            event_data['en-jp'].append(event)
         return 0
     return 1
 
@@ -83,7 +91,7 @@ async def load_event_schaledb(server):
         if server == "jp":
             event_data['db-jp'] = []
         else:
-            event_data['global'] = []
+            event_data['db-global'] = []
         for item in data:
             start_time = datetime.datetime.strptime(item['start'], r"%Y/%m/%d %H:%M")
             end_time = datetime.datetime.strptime(item['end'], r"%Y/%m/%d %H:%M")
@@ -95,6 +103,48 @@ async def load_event_schaledb(server):
             if server == "jp":
                 event_data['db-jp'].append(event)
             else:
+                event_data['db-global'].append(event)
+        return 0
+    return 1
+
+async def load_event_gamekee(server):
+    try:
+        gamekee_data = []
+        async with aiohttp.ClientSession() as session:
+            session.headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+            session.headers['Game-Alias'] = 'ba'
+            async with session.get('https://ba.gamekee.com/v1/wiki/index') as resp:
+                res = await resp.json()
+                for item in res["data"]:
+                    if item["module"]["name"] == "活动周历":
+                        gamekee_data = item["list"]
+                        break
+        if gamekee_data == []:
+            print('gamekee数据错误')
+            return 1
+        data = transform_gamekee_calendar(server, gamekee_data)
+        if data == None:
+            print('解析ba日程表失败')
+            return 1
+    except Exception as e:
+        print('解析ba日程表失败: ', e)
+        return 1
+    if data:
+        if server == "jp":
+            event_data['jp'] = []
+        else:
+            event_data['global'] = []
+        for item in data:
+            start_time = datetime.datetime.fromtimestamp(item["start"])
+            end_time = datetime.datetime.fromtimestamp(item["end"])
+            event = {'title': item['title'], 'start': start_time, 'end': end_time, 'type': 1}
+            if '倍' in event['title']:
+                event['type'] = 2
+            elif '总力' in event['title'] or '演习' in event['title']:
+                event['type'] = 3
+            if server == "jp":
+                event_data['jp'].append(event)
+            else:
                 event_data['global'].append(event)
         return 0
     return 1
@@ -102,12 +152,17 @@ async def load_event_schaledb(server):
 
 async def load_event(server):
     if server == 'jp':
+        return await load_event_gamekee("jp")
+    elif server == 'global':
+        return await load_event_gamekee("global")
+    elif server == 'en-jp':
         return await load_event_enwiki()
-        # return await load_event_schaledb("jp")
     elif server == 'db-jp':
         return await load_event_schaledb("jp")
-    else:
+    elif server == 'db-global':
         return await load_event_schaledb("global")
+    else:
+        return await load_event_gamekee("jp")
     return 1
 
 
