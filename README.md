@@ -32,14 +32,14 @@
 使用bot指令开启功能：  
 - `启用 ba_calendar`
 - `启用 ba_twitter`(如果修改了代码为本地获取，请确认已经填写好密钥并修改配置文件名再开启)  
-- `ba(日,国际、台、韩、美,en日,db日,db国际)服日历 on`(必要)
+- `ba(日,国际,en日,db日,db国际)服日历 on`(必要)
 - `ba更新卡池` 
 
 
 ## 指令列表
 - `ba日历` : 查看本群订阅服务器日历，需要先订阅(见第三条)，服务器取第一位，需要调整顺序可以先off掉其他服
-- `ba(日,国际、台、韩、美,en日,db日,db国际)服日历` : 查看指定服务器日程，db是SchaleDB，en是EnWiki，其余都是GameKee
-- `ba(日,国际、台、韩、美,en日,db日,db国际)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
+- `ba(日,国际,en日,db日,db国际)服日历` : 查看指定服务器日程，db是SchaleDB，en是EnWiki，其余都是GameKee
+- `ba(日,国际,en日,db日,db国际)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
 - `ba日历 time 时:分` : 设置日历推送时间
 - `ba日历 status` : 查看本群日历推送设置
 - `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片
