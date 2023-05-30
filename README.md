@@ -1,4 +1,4 @@
-### 新增了schaleDB获取日服日历，gamekee wiki好像做的不错，后续有空看看
+### 改为默认使用gamekee wiki
 
 
 # Blue_Archive_HoshinoBot
@@ -16,9 +16,9 @@
 ![%B_DCGP$@6RG1OF@K0DS%9X](https://user-images.githubusercontent.com/37209685/189478012-e0bc9d86-cd12-44ad-8347-f7def6f773bc.png)
 
 ## 信息源
-日服: [EnWiki](https://bluearchive.wiki/wiki/Main_Page)、[SchaleDB](https://lonqie.github.io/SchaleDB/)  
-国际服日历以及所有角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/) ←该项目经常改数据结构，获取不到了就来更新，没更新就提issues  
-角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)
+日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://lonqie.github.io/SchaleDB/)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
+角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/) （该项目经常改数据结构，获取不到了就来更新，没更新就提issues）  
+角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)（更新可能不及时，可以issues催我或者直接帮我提交）
 
 ## 安装方法
 
@@ -32,14 +32,14 @@
 使用bot指令开启功能：  
 - `启用 ba_calendar`
 - `启用 ba_twitter`(如果修改了代码为本地获取，请确认已经填写好密钥并修改配置文件名再开启)  
-- `ba(日,db日,国际、台、韩、美)服日历 on`(必要)
+- `ba(日,国际、台、韩、美,en日,db日,db国际)服日历 on`(必要)
 - `ba更新卡池` 
 
 
 ## 指令列表
 - `ba日历` : 查看本群订阅服务器日历，需要先订阅(见第三条)，服务器取第一位，需要调整顺序可以先off掉其他服
-- `ba(日、db日、国际、台、韩、美)服日历` : 查看指定服务器日程，db日服日历是schaleDB获取的。
-- `ba(日、db日、国际、台、韩、美)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
+- `ba(日,国际、台、韩、美,en日,db日,db国际)服日历` : 查看指定服务器日程，db是SchaleDB，en是EnWiki，其余都是GameKee
+- `ba(日,国际、台、韩、美,en日,db日,db国际)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
 - `ba日历 time 时:分` : 设置日历推送时间
 - `ba日历 status` : 查看本群日历推送设置
 - `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片
@@ -55,4 +55,6 @@
 2. 总力一图流也可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)。由于巴哈姆特反爬加强，修改为selenium获取网页，需要配置selenium环境才能够使用。
 
 ## 鸣谢
-感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)
+感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
+感谢群友帮忙整理角色名，欢迎加社团(id:20)
+
