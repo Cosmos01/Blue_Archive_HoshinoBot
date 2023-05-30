@@ -1,4 +1,5 @@
 import base64
+import json
 from .ba_calendar.generate import *
 from .raid_img import get_raid_img
 import hoshino
@@ -82,16 +83,20 @@ def update_group_schedule(group_id):
         minute = group_data[group_id]['minute']
         )
 
-@sv.on_rex(r'^ba([db日国际台韩美]{1,3})?[际際]?服?日[历程](.*)')
+@sv.on_rex(r'^ba([endb日国际台韩美]{1,4})?服?日[历程](.*)')
 async def start_scheduled(bot, ev):
     group_id = str(ev['group_id'])
     server_name = ev['match'].group(1)
     if server_name == '日':
         server = 'jp'
-    elif server_name == 'db日':
-        server = 'db-jp'
     elif server_name in ["国际", "台", "韩", "美"]:
         server = 'global'
+    elif server_name == 'en日':
+        server = 'en-jp'
+    elif server_name == 'db日':
+        server = 'db-jp'
+    elif server_name == 'db国际':
+        server = 'db-global'
     elif group_id in group_data and len(group_data[group_id]['server_list']) > 0:
         server = group_data[group_id]['server_list'][0]
     else:
