@@ -13,10 +13,10 @@ proxy = {"http": ""}
 chara_path = os.path.join(os.path.dirname(__file__), 'gacha', '_ba_data.json')
 pool_path = os.path.join(os.path.dirname(__file__), 'gacha', 'config.json')
 
-chara_url = "http://ba.seclabs.cn/Blue_Archive_HoshinoBot/gacha/_ba_data.json"
-pool_url = "http://ba.seclabs.cn/Blue_Archive_HoshinoBot/gacha/config.json"
-student_jp_url = "http://ba.seclabs.cn/SchaleDB/data/jp/students.min.json"
-student_icon_base_url = "http://ba.seclabs.cn/SchaleDB/images/student/icon/"
+chara_url = "http://124.223.25.80:40000/Blue_Archive_HoshinoBot/gacha/_ba_data.json"
+pool_url = "http://124.223.25.80:40000/Blue_Archive_HoshinoBot/gacha/config.json"
+student_jp_url = "http://124.223.25.80:40000/SchaleDB/data/jp/students.min.json"
+student_icon_base_url = "http://124.223.25.80:40000/SchaleDB/images/student/icon/"
 # 通过git获取的url
 # chara_url = "https://raw.githubusercontent.com/Cosmos01/Blue_Archive_HoshinoBot/main/gacha/_ba_data.json"
 # pool_url = "https://raw.githubusercontent.com/Cosmos01/Blue_Archive_HoshinoBot/main/gacha/config.json"
