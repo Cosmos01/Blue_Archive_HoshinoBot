@@ -3,9 +3,9 @@ from hoshino import aiorequests
 
 async def get_img(server = "日"):
     if server == "國際":
-        url = "http://ba.seclabs.cn/ba_raid_global.json"
+        url = "http://124.223.25.80:40000/ba_raid_global.json"
     else:
-        url = "http://ba.seclabs.cn/ba_raid_jp.json"
+        url = "http://124.223.25.80:40000/ba_raid_jp.json"
     try:
         res = await aiorequests.get(url,timeout=20)
         json_data = await res.json()
