@@ -7,7 +7,7 @@ from hoshino import R
 from hoshino import aiorequests
 
 
-base_url = "http://91.149.236.232:40000/"
+base_url = "http://ba.seclabs.cn/"
 students_url = base_url + "/SchaleDB/data/cn/students.json"
 localization_cn_url = base_url + "/SchaleDB/data/cn/localization.json"
 localization_jp_url = base_url + "/SchaleDB/data/jp/localization.json"
