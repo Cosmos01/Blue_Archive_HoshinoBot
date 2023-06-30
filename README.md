@@ -1,7 +1,7 @@
 # Blue_Archive_HoshinoBot
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询插件, 适用于 HoshinoBot v2.  
 
-## 建议更新版本换成新的api地址，国内服务器速度更快且更稳定，旧的如果出问题我不能第一时间注意到。
+### 建议更新版本换成新的api地址，国内服务器速度更快且更稳定，旧的如果出问题我不能第一时间注意到。
 
 项目地址 https://github.com/Cosmos01/Blue_Archive_HoshinoBot    
   
