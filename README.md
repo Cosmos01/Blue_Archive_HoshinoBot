@@ -1,5 +1,5 @@
 ### 建议更新版本换成新的api地址，国内服务器速度更快且更稳定，旧的如果出问题我不能第一时间注意到。
-正在写推特新的解决方案
+推特新方案测试中，不知道稳不稳定
 ![ACZ}9E)}U(B7S BRP~PR0WS_tmb](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/assets/37209685/04df42f4-c77c-4e81-ab53-a3edc878bc27)
 
 
