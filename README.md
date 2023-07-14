@@ -1,4 +1,4 @@
-总力一图流不小心忘记了，现已修复
+总力一图流不小心忘记了，现已修复  
 推特新方案测试中，不知道稳不稳定
 ![ACZ}9E)}U(B7S BRP~PR0WS_tmb](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/assets/37209685/04df42f4-c77c-4e81-ab53-a3edc878bc27)
 
