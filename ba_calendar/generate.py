@@ -8,6 +8,7 @@ from .draw import *
 
 server_name = {
     'jp': '日服',
+    'cn': '国服',
     'global': '国际服',
     'en-jp': '日服',
     'db-jp': '日服',
