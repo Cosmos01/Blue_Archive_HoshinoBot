@@ -5,13 +5,15 @@ import time
 def extract_calendar_data(server, data):
     if server == "jp":
         flag = "日服"
+    elif server == "cn":
+        flag = "国服"
     else:
         flag = "国际服"
     event_list = []
     for item in data:
         try:
             title = item["title"]
-            if flag not in title:
+            if flag not in item["pub_area"]:
                 continue
             if "卡池" in title:
                 title = title.replace(flag, "")
@@ -35,4 +37,3 @@ def extract_calendar_data(server, data):
 def transform_gamekee_calendar(server, data):
     data = extract_calendar_data(server, data)
     return data
-
