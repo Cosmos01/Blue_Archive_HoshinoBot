@@ -89,6 +89,8 @@ async def start_scheduled(bot, ev):
     server_name = ev['match'].group(1)
     if server_name == '日':
         server = 'jp'
+    elif server_name == '国':
+        server = 'cn'
     elif server_name in ["国际", "台", "韩", "美"]:
         server = 'global'
     elif server_name == 'en日':
