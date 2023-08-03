@@ -19,8 +19,8 @@ sv_help = '''
 [ba单抽] 转蛋模拟
 [ba来一井] 2w4钻！
 [ba查看卡池] 模拟卡池&出率
-[ba切换卡池] 更换模拟卡池
-[ba氪金+@] 充满！
+[ba切换卡池+X服] 更换模拟卡池
+[ba氪金+@对象] 充满！
 '''.strip()
 sv = Service('blue_gacha', help_=sv_help)
 jewel_limit = DailyNumberLimiter(15000)
@@ -71,6 +71,8 @@ async def set_pool(bot, ev: CQEvent):
         name = 'GLOBAL'
     elif name in ('日', '日服', 'jp', 'JP'):
         name = 'JP'
+    elif name in ('国', '国服', 'cn', 'CN'):
+        name = 'CN'
     elif name in ('FES', 'fes'):
         name = 'FES'
     else:
