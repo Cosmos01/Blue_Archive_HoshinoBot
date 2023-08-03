@@ -15,6 +15,7 @@ from .gamekee_calendar import transform_gamekee_calendar
 
 event_data = {
     'jp': [],
+    'cn': [],
     'global': [],
     'en-jp': [],
     'db-jp': [],
@@ -23,6 +24,7 @@ event_data = {
 
 event_updated = {
     'jp': '',
+    'cn': '',
     'global': '',
     'en-jp': '',
     'db-jp': '',
@@ -31,6 +33,7 @@ event_updated = {
 
 lock = {
     'jp': asyncio.Lock(),
+    'cn': asyncio.Lock(),
     'global': asyncio.Lock(),
     'en-jp': asyncio.Lock(),
     'db-jp': asyncio.Lock(),
@@ -132,6 +135,8 @@ async def load_event_gamekee(server):
     if data:
         if server == "jp":
             event_data['jp'] = []
+        elif server == "cn":
+            event_data['cn'] = []
         else:
             event_data['global'] = []
         for item in data:
@@ -144,6 +149,8 @@ async def load_event_gamekee(server):
                 event['type'] = 3
             if server == "jp":
                 event_data['jp'].append(event)
+            elif server == "cn":
+                event_data['cn'].append(event)
             else:
                 event_data['global'].append(event)
         return 0
@@ -153,6 +160,8 @@ async def load_event_gamekee(server):
 async def load_event(server):
     if server == 'jp':
         return await load_event_gamekee("jp")
+    if server == 'cn':
+        return await load_event_gamekee("cn")
     elif server == 'global':
         return await load_event_gamekee("global")
     elif server == 'en-jp':
