@@ -1,6 +1,3 @@
-![ACZ}9E)}U(B7S BRP~PR0WS_tmb](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/assets/37209685/04df42f4-c77c-4e81-ab53-a3edc878bc27)
-
-
 # Blue_Archive_HoshinoBot
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询插件, 适用于 HoshinoBot v2.  
 
@@ -58,4 +55,6 @@
 ## 鸣谢
 感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
 感谢群友帮忙整理角色名，欢迎加社团(id:20)
+
+![ACZ}9E)}U(B7S BRP~PR0WS_tmb](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/assets/37209685/04df42f4-c77c-4e81-ab53-a3edc878bc27)
 
