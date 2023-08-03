@@ -12,8 +12,8 @@ from .student_info import get_student_info, get_student_list
 HELP_STR = '''
 碧蓝档案活动日历
 `ba日历` : 查看本群订阅服务器日历，需要先订阅(见第三条)，服务器取第一位，需要调整顺序可以先off掉其他服
-`ba(日、db日、国际、台、韩、美)服日历` : 查看指定服务器日程，db日服日历是schaleDB获取的。
-`ba(日、db日、国际、台、韩、美)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
+`ba(国、日、db日、国际、台、韩、美)服日历` : 查看指定服务器日程，db日服日历是schaleDB获取的。
+`ba(国、日、db日、国际、台、韩、美)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
 `ba日历 time 时:分` : 设置日历推送时间
 `ba日历 status` : 查看本群日历推送设置
 `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片
