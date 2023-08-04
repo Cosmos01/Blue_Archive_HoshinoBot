@@ -1,5 +1,5 @@
-## 现已支持arona的攻略查询API，感谢大佬分享
-## 国服开服，已经支持国服，欢迎加团：834923321
+## 现已支持[arona](https://doc.arona.diyigemt.com/api/)的攻略查询API，感谢大佬分享
+- 国服开服，已经支持国服，欢迎加团：834923321
 
 # Blue_Archive_HoshinoBot
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
