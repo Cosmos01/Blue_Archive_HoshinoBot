@@ -1,3 +1,4 @@
+## 现已支持arona的攻略查询API，感谢大佬分享
 ## 国服开服，已经支持国服，欢迎加团：834923321
 
 # Blue_Archive_HoshinoBot
