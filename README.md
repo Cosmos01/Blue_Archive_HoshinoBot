@@ -62,7 +62,7 @@
 3. 推特5分钟获取一次，01分时获取，可以在诸如1分10秒，6分10秒这样的时间运行bot,可以更早获取到推特。
 
 ## 鸣谢
-感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API
+感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API    
 感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
 感谢群友帮忙整理角色名，欢迎加社团(id:20)
 
