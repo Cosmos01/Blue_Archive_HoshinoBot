@@ -50,16 +50,16 @@ async def get_pools(server="cn"):
     return msgs
 
 
-@sv.on_suffix(("服千里眼", "服万里眼","服未来视"))
-async def send_pools(bot, ev):
-    server_name = ev.message.extract_plain_text().strip()
-    if server_name == "国际":
-        server = "global"
-    elif server_name == "国":
-        server = "cn"
-    else:
-        return
+@sv.on_fullmatch(("国服千里眼", "国服万里眼","国服未来视"))
+async def send_pools_cn(bot, ev):
+    server = "cn"
+    msgs = await get_pools(server)
+    for msg in msgs:
+        await bot.send(ev, msg)
 
+@sv.on_fullmatch(("国际服千里眼","国际服未来视"))
+async def send_pools_cn(bot, ev):
+    server = "global"
     msgs = await get_pools(server)
     for msg in msgs:
         await bot.send(ev, msg)
