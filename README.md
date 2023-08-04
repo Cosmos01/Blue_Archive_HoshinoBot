@@ -1,7 +1,7 @@
 ## 国服开服，已经支持国服，欢迎加团：834923321
 
 # Blue_Archive_HoshinoBot
-碧蓝档案图形化活动日历、模拟抽卡、官推转发、总力攻略图、角色查询、Wiki攻略获取插件, 适用于 HoshinoBot v2.  
+碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
 
 项目地址 https://github.com/Cosmos01/Blue_Archive_HoshinoBot    
   
@@ -18,6 +18,7 @@
 日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://lonqie.github.io/SchaleDB/)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
 角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/) （该项目经常改数据结构，获取不到了就来更新，没更新就提issues）  
 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)、[bawiki-data](https://github.com/lgc-NB2Dev/bawiki-data)（更新可能不及时，可以issues催我或者直接帮我提交）
+游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)
 
 ## 安装方法
 
@@ -57,6 +58,7 @@
 3. 推特5分钟获取一次，01分时获取，可以在诸如1分10秒，6分10秒这样的时间运行bot,可以更早获取到推特。
 
 ## 鸣谢
+感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API
 感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
 感谢群友帮忙整理角色名，欢迎加社团(id:20)
 
