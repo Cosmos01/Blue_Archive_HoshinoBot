@@ -51,7 +51,10 @@
 - `ba角色列表` : 列出所有角色头像及昵称
 - `ba查询+角色名或昵称` : 查询角色信息，含角色评价
 - `国服(国际服)千里眼(万里眼/未来视)` : 获取卡池排期和抽卡推荐
-- `ba攻略/攻略查询+关键词` : 感谢[arona]([https://doc.arona.diyigemt.com/api/](https://doc.arona.diyigemt.com/command/manual#%E5%AD%A6%E7%94%9F%E4%B8%8E%E4%B8%BB%E7%BA%BF%E5%9C%B0%E5%9B%BE%E6%94%BB%E7%95%A5%E7%B3%BB%E5%88%97))的接口，关键词可以是学生/地图/X服活动/杂图等等，点击前面链接可以查看详情  
+- `ba攻略/攻略查询+关键词` : 感谢arona的接口，关键词可以是学生/地图/X服活动/杂图等等，详情看下面的链接  
+
+## ARONA攻略查询
+  感谢arona提供的api，使用方法请看[链接](https://doc.arona.diyigemt.com/api/](https://doc.arona.diyigemt.com/command/manual#%E5%AD%A6%E7%94%9F%E4%B8%8E%E4%B8%BB%E7%BA%BF%E5%9C%B0%E5%9B%BE%E6%94%BB%E7%95%A5%E7%B3%BB%E5%88%97))
 
 ## 注意事项  
 1. (推特API收费，100刀一个月)如果不想使用我的api，可以注释掉twitter.py上半部分代码，取消注释下面部分代码，申请推特API，将项目目录下的twitter-template.json改名为twitter.json，并填入密钥等参数 (具体申请方法自行搜索)，注意配置代理(推荐使用Proxifier)
