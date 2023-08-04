@@ -23,9 +23,10 @@ HELP_STR = '''
 `ba氪金+@目标` : 恢复抽卡次数，可@多个目标
 `ba角色列表` : 列出所有角色头像及昵称
 `ba查询+角色名或昵称` : 查询角色信息，含角色评价
+`国服(国际服)千里眼(万里眼/未来视)` : 获取卡池排期和抽卡推荐  
 '''.strip()
 
-sv = hoshino.Service('ba_calendar',enable_on_default=False, help_=HELP_STR, bundle='ba查询')
+sv = hoshino.Service('ba_calendar',enable_on_default=False, help_=HELP_STR, bundle='ba日历')
 
 group_data = {}
 
