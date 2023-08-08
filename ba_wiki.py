@@ -85,11 +85,10 @@ async def get_arona_img(name):
             return msgs
         if data["message"] == "fuse search":
             msgs = await get_arona_img(data["data"][0]["name"])
-            if data["message"] == "fuse search":
-                msg = "其他可能的查询结果："
-                for item in data["data"][1:]:
-                    msg += f'\n{item["name"]}'
-                msgs.append(msg)
+            msg = "其他可能的查询结果："
+            for item in data["data"][1:]:
+                msg += f'\n{item["name"]}'
+            msgs.append(msg)
             return msgs
 
         msgs.append(f"查询结果：{data['data'][0]['name']}")
