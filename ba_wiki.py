@@ -64,7 +64,6 @@ async def send_pools_cn(bot, ev):
     for msg in msgs:
         await bot.send(ev, msg)
 
-
 def get_file_md5(file_path):
     with open(file_path, 'rb') as f:
         hash = hashlib.md5(f.read()).hexdigest()
@@ -124,6 +123,7 @@ async def get_arona_img(name):
 @sv.on_prefix(("ba攻略", "攻略查询"))
 async def send_arona(bot, ev):
     cmd = ev.message.extract_plain_text().strip()
+    print(cmd)
     if not cmd:
         await bot.send(ev, "请输入要查询的内容")
         return
