@@ -120,7 +120,7 @@ async def get_arona_img(name):
     return msgs
 
 
-@sv.on_prefix(("ba攻略", "攻略查询"))
+@sv.on_prefix(("ba攻略", "攻略查询", "/攻略"))
 async def send_arona(bot, ev):
     cmd = ev.message.extract_plain_text().strip()
     if not cmd:
