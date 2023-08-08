@@ -123,7 +123,6 @@ async def get_arona_img(name):
 @sv.on_prefix(("ba攻略", "攻略查询"))
 async def send_arona(bot, ev):
     cmd = ev.message.extract_plain_text().strip()
-    print(cmd)
     if not cmd:
         await bot.send(ev, "请输入要查询的内容")
         return
