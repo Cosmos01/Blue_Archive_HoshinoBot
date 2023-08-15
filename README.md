@@ -1,4 +1,5 @@
 ## 现已支持[arona](https://doc.arona.diyigemt.com/api/)的攻略查询API，感谢大佬分享
+## 几个月没更新的请及时更新版本，旧版即将无法获取推文
 - 国服开服，已经支持国服，欢迎加团：834923321（bot问题提issues，别问群里的）
 
 # Blue_Archive_HoshinoBot
