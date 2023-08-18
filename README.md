@@ -8,10 +8,9 @@
   
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
 
-**项目地址** https://github.com/Cosmos01/Blue_Archive_HoshinoBot
+**项目地址** https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
 **纯净整合包** https://github.com/Cosmos01/HoshinoBot_Blue
 
-<br><br>
 -------------
   
 日程参考项目：https://github.com/zyujs/pcr_calendar  
