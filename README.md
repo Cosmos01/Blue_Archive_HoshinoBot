@@ -23,7 +23,7 @@
 <br><br>
 ## 信息源
 日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://lonqie.github.io/SchaleDB/)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
-角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/) （该项目经常改数据结构，获取不到了就来更新，没更新就提issues）  
+角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)   
 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)、[bawiki-data](https://github.com/lgc-NB2Dev/bawiki-data)（更新可能不及时，可以issues催我或者直接帮我提交）  
 游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)  
 <br><br>
