@@ -1,8 +1,6 @@
 **临时公告**
 - 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
-- 现已支持[arona](https://doc.arona.diyigemt.com/api/)的攻略查询API，感谢大佬分享
 - 几个月没更新的请及时更新版本，旧版即将无法获取推文
-- 国服开服，已经支持国服，欢迎加团：834923321（bot问题提issues，别问群里的）
 
 # Blue_Archive_HoshinoBot
   
@@ -75,5 +73,6 @@
 ## 鸣谢
 感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API    
 感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
-感谢群友帮忙整理角色名，欢迎加社团(日服id:20)
+感谢群友帮忙整理角色名，欢迎加社团(日服id:20、911)
+国服群：834923321
 
