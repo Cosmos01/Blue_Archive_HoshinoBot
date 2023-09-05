@@ -1,6 +1,7 @@
 **临时公告**
 - 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
 - 几个月没更新的请及时更新版本，旧版即将无法获取推文
+- 推特偶尔会混进来一些迷惑推文，原因未知，大伙忍一下
 
 # Blue_Archive_HoshinoBot
   
