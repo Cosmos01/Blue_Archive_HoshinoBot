@@ -2,7 +2,9 @@ import json
 import logging
 import os
 import re
-
+import io
+from io import BytesIO
+from PIL import Image
 import hoshino
 from hoshino import priv, R, aiorequests
 from nonebot import on_command, get_bot, scheduler
@@ -31,16 +33,21 @@ async def update_icon():
             if R.img(f'bluearchive/unit/icon_unit_{str(student["Id"])}.png').exist:
                 continue
             print(f'检测到缺失角色图片：{student["DevName"]}，正在从SchaleDB下载图片')
-            CollectionTexture = student["CollectionTexture"]
             img = await aiorequests.get(
-                f'{student_icon_base_url}{CollectionTexture}.png',
+                f'{student_icon_base_url}{str(student["Id"])}.webp',
                 timeout=15,proxies=proxy)
             img_save_path = os.path.abspath(
                 os.path.join(hoshino.config.RES_DIR, f'img/bluearchive/unit/icon_unit_{str(student["Id"])}.png'))
             img_cont = await img.content
+            byte_stream = BytesIO(img_cont) 
+            roiImg = Image.open(byte_stream) 
+            imgByteArr = io.BytesIO()
+            roiImg.save(imgByteArr, format='PNG') 
+            imgByteArr = imgByteArr.getvalue() 
             with open(img_save_path, 'wb') as f:
-                f.write(img_cont)
-    except:
+                f.write(imgByteArr)
+    except Exception as e:
+        logging.warning(e)
         return
 
 async def update():
@@ -85,4 +92,5 @@ async def update_pool_sdj():
     if status == None:
         msg = f'自动更新ba卡池时发生错误'
         await bot.send_private_msg(user_id=master_id, message=msg)
+
 
