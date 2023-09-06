@@ -2,6 +2,7 @@
 - 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
 - 几个月没更新的请及时更新版本，旧版即将无法获取推文
 - 推特偶尔会混进来一些迷惑推文，原因未知，大伙忍一下
+- SchaleDB又又又大改了结构，已经更新，获取不到头像就更新一下吧
 
 # Blue_Archive_HoshinoBot
   
