@@ -1,11 +1,12 @@
 import datetime
 import requests
 
-common = "https://lonqie.github.io/SchaleDB/data/common.json"
-localization = "https://lonqie.github.io/SchaleDB/data/cn/localization.json"
-raids = "https://lonqie.github.io/SchaleDB/data/cn/raids.min.json"
-student_cn = "https://lonqie.github.io/SchaleDB/data/cn/students.min.json"
-student_jp = "https://lonqie.github.io/SchaleDB/data/jp/students.min.json"
+base_url = "http://124.223.25.80:40000/"
+common = base_url + "SchaleDB/data/config.json"
+localization = base_url + "SchaleDB/data/cn/localization.json"
+raids = base_url + "SchaleDB/data/cn/raids.min.json"
+student_cn = base_url + "SchaleDB/data/cn/students.min.json"
+student_jp = base_url + "SchaleDB/data/jp/students.min.json"
 
 def get_item(dict,key,value):
     for item in dict:
@@ -36,13 +37,13 @@ def extract_calendar_data(server):
 
 
     if server == "jp":
-        data = common_data["regions"][0]
+        data = common_data["Regions"][0]
     else:
-        data = common_data["regions"][1]
+        data = common_data["Regions"][1]
 
 
     #gacha
-    for gacha in data["current_gacha"]:
+    for gacha in data["CurrentGacha"]:
         characters = gacha["characters"]
         for character in characters:
             stu_info = get_item(student_data,"Id",character)
@@ -52,7 +53,7 @@ def extract_calendar_data(server):
             event_list.append({'title': title, 'start': start_time, 'end': end_time})
 
     #event
-    for event in data["current_events"]:
+    for event in data["CurrentEvents"]:
         event_rerun = ""
         event_id = event["event"]
         # 复刻活动似乎是在原id前面加上10
@@ -65,7 +66,7 @@ def extract_calendar_data(server):
         event_list.append({'title': event_name, 'start': start_time, 'end': end_time})
 
     #raid
-    for raid in data["current_raid"]:
+    for raid in data["CurrentRaid"]:
         raid_id = raid["raid"]
         title = ""
         #总力
