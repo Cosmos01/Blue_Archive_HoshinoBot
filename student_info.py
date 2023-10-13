@@ -11,7 +11,6 @@ base_url = "http://124.223.25.80:40000/"
 students_url = base_url + "/SchaleDB/data/cn/students.json"
 localization_cn_url = base_url + "/SchaleDB/data/cn/localization.json"
 localization_jp_url = base_url + "/SchaleDB/data/jp/localization.json"
-common_url = base_url + "/SchaleDB/data/common.json"
 
 localization_cn_data = {}
 
@@ -124,11 +123,10 @@ async def get_student_info(nickname):
     student_id = int(student_id)
 
     global localization_cn_data
-    common_data = await get_json_data(common_url)
     student_data = await get_json_data(students_url)
     localization_cn_data = await get_json_data(localization_cn_url)
     localization_jp_data = await get_json_data(localization_jp_url)
-    if common_data == None or student_data == None or localization_cn_data == None or localization_jp_data == None:
+    if student_data == None or localization_cn_data == None or localization_jp_data == None:
         return ["获取数据失败"]
 
     msg_list = []
