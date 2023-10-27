@@ -1,5 +1,4 @@
 **临时公告**
-- SchaleDB又改了结构，已经更新，获取不到角色就更新一下吧
 - 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
 - 推特偶尔会混进来一些迷惑推文，原因未知，大伙忍一下
 
