@@ -37,7 +37,7 @@
 使用bot指令开启功能：  
 - `启用 ba_calendar`
 - `启用 ba_twitter`(日服推特获取)  
-- `ba(日,国,国际,en日,db日,db国际)服日历 on`(必要)
+- `ba(日,国,国际,en日,db日,db国际)服日历 on`
 - `ba更新卡池` 
 
 <br><br>
