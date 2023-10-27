@@ -36,6 +36,8 @@ async def get_msgs():
 async def send_tweet():
     bot = hoshino.get_bot()
     available_group = await sv.get_enable_groups()
+    if len(available_group) == 0:
+        return
     msg_list = await get_msgs()
     if msg_list != None and len(msg_list) > 0:
         for group_id in available_group:
