@@ -47,7 +47,7 @@ async def send_tweet():
 
 
 
-# 以下为本地获取推特方案
+# 以下为本地获取推特方案，推特api收费，用不了了
 '''
 import datetime
 import base64
