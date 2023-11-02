@@ -8,7 +8,6 @@ import asyncio
 import math
 from .enwiki_calendar import transform_enwiki_calendar
 from .schaledb_calendar import transform_schaledb_calendar
-from .biliwiki_calendar import transform_biliwiki_calendar
 from .gamekee_calendar import transform_gamekee_calendar
 
 # type 0普通 1 活动 2双倍 3 总力战
@@ -39,16 +38,6 @@ lock = {
     'db-jp': asyncio.Lock(),
     'db-global': asyncio.Lock(),
 }
-
-
-async def query_data(url):
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url) as resp:
-                return await resp.json()
-    except:
-        pass
-    return None
 
 
 async def load_event_enwiki():
@@ -83,7 +72,7 @@ async def load_event_enwiki():
 async def load_event_schaledb(server):
     data = ''
     try:
-        data = transform_schaledb_calendar(server)
+        data = await transform_schaledb_calendar(server)
         if data == None:
             print('解析ba日程表失败')
             return 1
@@ -109,6 +98,7 @@ async def load_event_schaledb(server):
                 event_data['db-global'].append(event)
         return 0
     return 1
+
 
 async def load_event_gamekee(server):
     try:
@@ -172,7 +162,6 @@ async def load_event(server):
         return await load_event_schaledb("global")
     else:
         return await load_event_gamekee("jp")
-    return 1
 
 
 def get_ba_now(offset):

@@ -1,5 +1,4 @@
 from PIL import Image, ImageDraw, ImageFont
-from .event import *
 import os
 
 item_height = 45

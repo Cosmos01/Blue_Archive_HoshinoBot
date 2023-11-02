@@ -1,10 +1,5 @@
-import math
-import asyncio
-import datetime
-import base64
-from io import BytesIO
-from .event import *
 from .draw import *
+from .event import *
 
 server_name = {
     'jp': '日服',
@@ -14,13 +9,6 @@ server_name = {
     'db-jp': '日服',
     'db-global': '国际服'
 }
-
-
-def im2base64str(im):
-    io = BytesIO()
-    im.save(io, 'png')
-    base64_str = f"base64://{base64.b64encode(io.getvalue()).decode()}"
-    return base64_str
 
 
 async def generate_day_schedule(server='jp'):

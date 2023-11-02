@@ -1,5 +1,4 @@
 import random
-
 from hoshino import util
 from . import chara
 

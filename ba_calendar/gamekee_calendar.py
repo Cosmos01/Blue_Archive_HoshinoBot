@@ -1,5 +1,4 @@
 import re
-import time
 
 
 def extract_calendar_data(server, data):
