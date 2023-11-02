@@ -4,7 +4,7 @@ import re
 import traceback
 from .ba_calendar.generate import *
 from .utils import *
-from moudle.ba_logo import draw_pic
+from .moudle.ba_logo import draw_pic
 
 HELP_STR = '''
 碧蓝档案综合插件
