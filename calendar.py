@@ -9,8 +9,8 @@ from moudle.ba_logo import draw_pic
 HELP_STR = '''
 碧蓝档案综合插件
 `ba日历` : 本群订阅服务器日历，需要先订阅(见第三条)，默认取第一位，需要调整顺序先off掉其他服
-`ba(日/国/db日/en日/国际)服日历` : 指定服务器日程
-`ba(日/国/db日/en日/国际)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
+`ba(日/国/db日/en日/国际/db国际)服日历` : 指定服务器日程
+`ba(日/国/db日/en日/国际/db国际)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
 `ba日历 time 时:分` : 设置日历推送时间
 `ba日历 status` : 本群日历推送设置
 `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片
