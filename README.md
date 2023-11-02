@@ -20,7 +20,7 @@
 ## 信息源
 日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://lonqie.github.io/SchaleDB/)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
 角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)   
-角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)、[bawiki-data](https://github.com/lgc-NB2Dev/bawiki-data)（更新可能不及时，可以issues催我或者直接帮我提交）  
+角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)、[bawiki-data](https://github.com/lgc-NB2Dev/bawiki-data)   
 游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)  
 <br><br>
 ## 安装方法
@@ -41,20 +41,21 @@
 <br><br>
 ## 指令列表
 - `帮助ba日历` : 获取以下帮助内容
-- `ba日历` : 查看本群订阅服务器日历，需要先订阅(见第三条)，服务器取第一位，需要调整顺序可以先off掉其他服
-- `ba(日,国,国际,en日,db日,db国际)服日历` : 查看指定服务器日程，db是SchaleDB，en是EnWiki，其余都是GameKee
-- `ba(日,国,国际,en日,db日,db国际)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
+- `ba日历` : 本群订阅服务器日历，需要先订阅(见第三条)，默认取第一位，需要调整顺序先off掉其他服
+- `ba(日/国/db日/en日/国际)服日历` : 指定服务器日程
+- `ba(日/国/db日/en日/国际)服日历 on/off` : 订阅/取消订阅指定服务器的日历推送
 - `ba日历 time 时:分` : 设置日历推送时间
 - `ba日历 status` : 查看本群日历推送设置
 - `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片(我也不晓得有啥区别)
-- `(x服)总力一图流` : 查看当前总力一图流,服务器名为空时默认日服
+- `(日/国际服)总力一图流` : 当前总力一图流,为空时默认日服
 - `ba来一井\ba十连\ba单抽` : 模拟抽卡
-- `ba更新卡池` : 自动更新角色列表、卡池、资源文件。由于SchaleDB似乎没有提前更新的习惯，一般会在当晚更新卡池，最迟第二天早上。
+- `ba更新卡池` : 更新角色列表、卡池、资源文件，默认会自动更新
 - `ba氪金+@目标` : 恢复抽卡次数，可@多个目标
 - `ba角色列表` : 列出所有角色头像及昵称
-- `ba查询+角色名或昵称` : 查询角色信息，含角色评价
-- `国服(国际服)千里眼(万里眼/未来视)` : 获取卡池排期和抽卡推荐
-- `ba攻略(攻略查询,/攻略)+关键词` : 感谢arona的接口，关键词可以是学生/地图/X服活动/杂图等等，详情看下面的链接  
+- `ba查询+角色名或昵称` : 查询角色信息
+- `国服/国际服+千里眼/未来视` : 获取卡池排期和抽卡推荐
+- `ba攻略(攻略查询、/攻略)+关键词` : 查询攻略,支持模糊查询,关键词可以是学生/地图/活动等，使用`杂图`关键词获取详情 
+- `balogo+上文/下文` : 生成你游风格logo,上下文使用`/`分隔
 
 <br><br>
 ## ARONA攻略查询
