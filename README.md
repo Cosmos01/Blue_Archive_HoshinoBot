@@ -12,7 +12,7 @@
 -------------
   
 日程参考项目：https://github.com/zyujs/pcr_calendar  
-承接该项目的抽卡功能并加入更新卡池功能：https://github.com/azmiao/bluearchive_hoshino_plugin.git  
+承接该项目的抽卡功能并加入更新卡池功能：https://github.com/azmiao/bluearchive_hoshino_plugin
 本想加入B站几位UP动态推送功能，但已经有bili-notice-hoshino、rss之类的推送插件，有需要可以另外安装。
 <br><br>
 ![FYBN %B61EG``_OG~B8XZ$B](https://user-images.githubusercontent.com/37209685/165712652-5b221387-f0cc-41c2-9b6c-9b6b76063ed5.PNG)
@@ -69,6 +69,7 @@
 <br><br>
 ## 鸣谢
 感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API    
+感谢[@benx1n](https://github.com/benx1n)提供的代码    
 感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
 感谢群友帮忙整理角色名，欢迎加社团(日服id:20、911)    
 国服群：834923321
