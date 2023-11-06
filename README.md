@@ -1,11 +1,12 @@
 # Blue_Archive_HoshinoBot
   
+碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
+
+  
 **临时公告**
 - 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
 - 推特偶尔会混进来一些迷惑推文，原因未知，大伙忍一下
-  
-碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
-
+    
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
 纯净整合包  https://github.com/Cosmos01/HoshinoBot_Blue
 
