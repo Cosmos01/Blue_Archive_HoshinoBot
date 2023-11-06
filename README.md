@@ -1,8 +1,8 @@
+# Blue_Archive_HoshinoBot
+  
 **临时公告**
 - 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
 - 推特偶尔会混进来一些迷惑推文，原因未知，大伙忍一下
-
-# Blue_Archive_HoshinoBot
   
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
 
@@ -74,6 +74,6 @@
 感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API    
 感谢[@benx1n](https://github.com/benx1n)提供的代码    
 感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
-感谢群友帮忙整理角色名，欢迎加社团(日服id:20、911)    
-国服群：834923321
+感谢群友帮忙整理角色名，欢迎加社团(日服id:20、911，国服群：834923321)。    
+
 
