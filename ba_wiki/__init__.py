@@ -8,7 +8,7 @@ sv = Service('ba_wiki', enable_on_default=True, visible=True, bundle='碧蓝档�
 
 base_path = "bluearchive/wiki/"
 
-arona_url = "https://arona.diyigemt.com/api/v1/image"
+arona_url = "https://arona.diyigemt.com/api/v2/image"
 arona_img_url = "https://arona.cdn.diyigemt.com/image"
 gamekee_url = "https://ba.gamekee.com/v1/content/detail/"
 
@@ -38,7 +38,7 @@ async def get_pools(server="cn"):
                 msgs.append("\n" + img_content_to_cqcode(img_content))
     except Exception as e:
         msgs.append("获取千里眼图片失败")
-        print(e)
+        logging.warning(e)
     return msgs
 
 
@@ -69,14 +69,14 @@ async def get_arona_img(name):
     try:
         r = await aiorequests.get(arona_url, params={"name": name}, timeout=10)
         data = await r.json()
-        if data["status"] != 200 and data["status"] != 101:
-            msgs.append("请求错误")
-            print(data)
+        if data["code"] != 200:
+            msgs.append("请求错误: " + data["message"])
+            logging.warning("请求错误: " + str(data))
             return msgs
-        if len(data["data"]) == 0:
+        if "data" not in data or data["data"] is None or len(data["data"]) == 0:
             msgs.append("未找到相关内容")
             return msgs
-        if data["message"] == "fuse search":
+        if len(data["data"]) > 1:
             msgs = await get_arona_img(data["data"][0]["name"])
             msg = "其他可能的查询结果："
             for item in data["data"][1:]:
@@ -85,8 +85,13 @@ async def get_arona_img(name):
             return msgs
 
         msgs.append(f"查询结果：{data['data'][0]['name']}")
-        path = data["data"][0]["path"]
+        path = data["data"][0]["content"]
         md5 = data["data"][0]["hash"]
+
+        # 纯文本的情况(没遇到过)
+        if data["data"][0] == "plain":
+            msgs.append(path)
+            return msgs
 
         flag = True
         if R.img(base_path + path).exist:
@@ -104,11 +109,9 @@ async def get_arona_img(name):
             img_cont = await r.content
             with open(R.img(base_path + path).path, 'wb') as f:
                 f.write(img_cont)
-
         msgs.append(R.img(base_path + path).cqcode)
-
     except Exception as e:
-        print(e)
+        logging.warning(e)
         msgs.append("查询失败")
     return msgs
 
