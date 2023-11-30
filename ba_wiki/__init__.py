@@ -69,7 +69,7 @@ async def get_arona_img(name):
     try:
         r = await aiorequests.get(arona_url, params={"name": name}, timeout=10)
         data = await r.json()
-        if data["code"] != 200:
+        if data["code"] != 200 and data["code"] != 101:
             msgs.append("请求错误: " + data["message"])
             logging.warning("请求错误: " + str(data))
             return msgs
