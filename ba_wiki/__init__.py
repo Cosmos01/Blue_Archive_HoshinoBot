@@ -76,12 +76,13 @@ async def get_arona_img(name):
         if "data" not in data or data["data"] is None or len(data["data"]) == 0:
             msgs.append("未找到相关内容")
             return msgs
-        if len(data["data"]) > 1:
+        if len(data["data"]) > 1 or data["message"] == "Fuzzy Search":
             msgs = await get_arona_img(data["data"][0]["name"])
-            msg = "其他可能的查询结果："
-            for item in data["data"][1:]:
-                msg += f'\n{item["name"]}'
-            msgs.append(msg)
+            if len(data["data"]) > 1:
+                msg = "其他可能的查询结果："
+                for item in data["data"][1:]:
+                    msg += f'\n{item["name"]}'
+                msgs.append(msg)
             return msgs
 
         msgs.append(f"查询结果：{data['data'][0]['name']}")
