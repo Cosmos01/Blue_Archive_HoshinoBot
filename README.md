@@ -6,6 +6,7 @@
 **临时公告**
 - 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
 - 推特偶尔会混进来一些迷惑推文，原因未知，大伙忍一下
+- 现在推特会转发GIF了，测试时候可能打扰到大伙了，抱歉
     
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
 纯净整合包  https://github.com/Cosmos01/HoshinoBot_Blue
