@@ -79,8 +79,7 @@
    然后找到下面这行代码替换
    ```python
    # return MessageSegment.image(f'file:///{os.path.abspath(self.path)}') 替换为↓    
-   path = os.path.abspath(self.path)
-   with open(path, 'rb') as f:
+   with open(os.path.abspath(self.path), 'rb') as f:
        buf = BytesIO(f.read())
    return f'[CQ:image,file=base64://{base64.b64encode(buf.getvalue()).decode()}]'
    ```
