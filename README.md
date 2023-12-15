@@ -81,7 +81,7 @@
    # return MessageSegment.image(f'file:///{os.path.abspath(self.path)}') 替换为↓    
    path = os.path.abspath(self.path)
    with open(path, 'rb') as f:
-     buf = BytesIO(f.read())
+       buf = BytesIO(f.read())
    return f'[CQ:image,file=base64://{base64.b64encode(buf.getvalue()).decode()}]'
    ```
 
