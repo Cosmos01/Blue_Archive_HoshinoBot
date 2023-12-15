@@ -75,11 +75,11 @@
    `from io import BytesIO
    import base64`,然后找到下面这行代码替换
    `
-            # return MessageSegment.image(f'file:///{os.path.abspath(self.path)}') 替换为↓
-            path = os.path.abspath(self.path)
-            with open(path, 'rb') as f:
-                buf = BytesIO(f.read())
-            return f'[CQ:image,file=base64://{base64.b64encode(buf.getvalue()).decode()}]'`
+            # return MessageSegment.image(f'file:///{os.path.abspath(self.path)}') 替换为↓    
+            path = os.path.abspath(self.path)    
+            with open(path, 'rb') as f:    
+                buf = BytesIO(f.read())    
+            return f'[CQ:image,file=base64://{base64.b64encode(buf.getvalue()).decode()}]'`    
 
 <br><br>
 ## 鸣谢
