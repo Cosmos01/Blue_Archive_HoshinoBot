@@ -73,15 +73,14 @@
 3. 总力一图流可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)。由于巴哈姆特反爬加强，修改为selenium获取网页，需要配置selenium环境才能够使用。
 4. 使用shamrock会导致部分图片无法发送，目前可以先直接替换HoshinoBot目录下的hoshino/R.py中的代码，首行加入
    ```python
-   from io import BytesIO
    import base64
    ```
    然后找到下面这行代码替换
    ```python
-   # return MessageSegment.image(f'file:///{os.path.abspath(self.path)}') 替换为↓    
-   with open(os.path.abspath(self.path), 'rb') as f:
-       buf = BytesIO(f.read())
-   return f'[CQ:image,file=base64://{base64.b64encode(buf.getvalue()).decode()}]'
+            # return MessageSegment.image(f'file:///{os.path.abspath(self.path)}') 替换为↓
+            with open(os.path.abspath(self.path), 'rb') as f:
+                content = f.read()
+            return f'[CQ:image,file=base64://{base64.b64encode(content).decode()}]'
    ```
 
 <br><br>
