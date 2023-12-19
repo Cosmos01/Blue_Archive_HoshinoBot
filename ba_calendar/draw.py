@@ -32,7 +32,8 @@ def draw_rec(im, color, x, y, w, h, r):
 
 def draw_text(im, x, y, w, h, text, align, color):
     draw = ImageDraw.Draw(im)
-    tw, th = draw.textsize(text, font=font)
+    bbox = draw.textbbox((x, y), text, font=font)
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
     y = y + (h - th) / 2
     if align == 0: #居中
         x = x + (w - tw) / 2
