@@ -10,6 +10,7 @@ from hoshino import aiorequests
 def get_base_dir():
     return os.path.dirname(__file__)
 
+
 def get_config():
     with open(os.path.join(get_base_dir(), 'config.json'), encoding='utf8') as f:
         config = json.load(f)
@@ -76,3 +77,20 @@ def get_item(dic, key, value):
     return None
 
 
+def get_default_server(gid):
+    try:
+        path = os.path.join(os.path.dirname(__file__), 'data.json')
+        with open(path, encoding='utf8') as f:
+            group_data = json.load(f)
+    except Exception as e:
+        logging.error(e)
+        return "jp"
+    if str(gid) not in group_data or len(group_data[str(gid)]["server_list"]) == 0:
+        return "jp"
+    server = group_data[str(gid)]["server_list"][0]
+    if "jp" in server:
+        return "jp"
+    elif server == "cn":
+        return "cn"
+    elif "global" in server:
+        return "global"
