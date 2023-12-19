@@ -1,5 +1,5 @@
 import hashlib
-from hoshino import R,Service
+from hoshino import R, Service
 from ..utils import *
 from .raid_img import get_raid_img
 from .student_info import get_student_info, get_student_list
@@ -89,7 +89,7 @@ async def get_arona_img(name):
         path = data["data"][0]["content"]
         md5 = data["data"][0]["hash"]
 
-        # 纯文本的情况(没遇到过)
+        # 纯文本的情况(我也没遇到过)
         if data["data"][0] == "plain":
             msgs.append(path)
             return msgs
@@ -179,3 +179,32 @@ async def send_student_list(bot, ev):
             }
         })
     await bot.send_group_forward_msg(group_id=ev.group_id, messages=forward_msg)
+
+
+@sv.on_rex(r'^(?P<server>[日国Bb])?服?第?(?P<num>\d+)?期?(?P<type>(总力|大决))战?排名')
+async def send_rank(bot, ev):
+    server = ev['match'].group('server')
+    if server is None:
+        server = get_default_server(ev.group_id)
+    num = ev['match'].group('num')
+    rtype = ev['match'].group('type')
+    if server == "国" or server == "cn":
+        server = "cn"
+    elif server == "B" or server == "b":
+        server = "bili"
+    else:
+        server = "jp"
+    if num is None:
+        num = "last"
+    if rtype == "总力":
+        rtype = "raid"
+    else:
+        rtype = "eraid"
+    if server != "jp" and rtype == "eraid":
+        server = "jp"
+    url = get_base_url() + f"rank/{server}/{rtype}/{num}.png"
+    img = await get_img_content(url)
+    if img is None:
+        await bot.send(ev, "获取失败，请确认服务器和期数是否存在")
+        return
+    await bot.send(ev, img_content_to_cqcode(img))
