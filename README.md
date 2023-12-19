@@ -4,9 +4,7 @@
 
   
 **临时公告**
-- 首次使用HoshinoBot的可以使用我整理的去掉PCR功能的纯净版[整合包](https://github.com/Cosmos01/HoshinoBot_Blue)
-- 推特偶尔会混进来一些迷惑推文，原因未知，大伙忍一下
-- 现在推特会转发GIF了，测试时候可能打扰到大伙了，抱歉
+- 新增总力排名功能，支持国服、日服，总力战和大决战
     
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
 纯净整合包  https://github.com/Cosmos01/HoshinoBot_Blue
@@ -22,10 +20,11 @@
 
 <br><br>
 ## 信息源
-日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://lonqie.github.io/SchaleDB/)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
-角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)   
-角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)、[bawiki-data](https://github.com/lgc-NB2Dev/bawiki-data)   
-游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)  
+- 日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://lonqie.github.io/SchaleDB/)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
+- 角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)   
+- 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)  
+- 游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)
+- 总力排名：[日服](https://arona.ai/graph)、[国服](https://arona.icu/)(加群没反应，API已标明出处，每天只获取3次，使用我的服务器分发，如有问题可以联系我)
 <br><br>
 ## 安装方法
 
