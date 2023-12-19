@@ -71,7 +71,7 @@
 1. 如果需要更久以后的日历，可以将[generate.py](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/blob/main/ba_calendar/generate.py)的`get_events(server, 0, 7)`的7改成14或更久以后的天数。
 2. 推特5分钟获取一次，01分时获取，可以在诸如1分10秒，6分10秒这样的时间运行bot,可以更早获取到推特。
 3. 总力一图流可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)。由于巴哈姆特反爬加强，修改为selenium获取网页，需要配置selenium环境才能够使用。
-4. 使用shamrock等非本机QQ端会导致部分图片无法发送，在hoshino\config\__bot__.py中修改RES_PROTOCOL为base64（http可能也可以）
+4. 使用shamrock等非本机QQ端会导致部分图片无法发送，在hoshino\config\__bot__.py中修改RES_PROTOCOL为base64（http配好RES_URL应该也可以）
 
 <br><br>
 ## 鸣谢
