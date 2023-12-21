@@ -30,10 +30,9 @@
 ## 安装方法
 
 1. 在HoshinoBot的插件目录modules下clone本项目 `git clone https://github.com/Cosmos01/Blue_Archive_HoshinoBot.git`
-2. 进入本项目目录运行 `pip install -r requirements.txt `安装必要的第三方库
-3. 在 `config/__bot__.py`的MODULES_ON列表里加入 `Blue_Archive_HoshinoBot`
-4. 将bluearchive文件夹移动到HoshinoBot\res\img目录下
-5. 重启HoshinoBot
+2. 在 `config/__bot__.py`的MODULES_ON列表里加入 `Blue_Archive_HoshinoBot`
+3. 将bluearchive文件夹移动到HoshinoBot\res\img目录下
+4. 重启HoshinoBot
 
 部分模块默认是关闭状态，抽卡前请先更新卡池  
 使用bot指令开启功能：  
