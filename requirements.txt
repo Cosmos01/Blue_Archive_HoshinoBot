@@ -1,3 +1,2 @@
 Pillow>=6.2.1
 bs4~=0.0.1
-pygtrans~=1.4.0
