@@ -19,7 +19,7 @@ def extract_calendar_data(server, data):
             if "卡池" in title:
                 title = title.replace(flag, "")
             elif "维护" in title:
-                st = time.strftime("%m-%d %H:%M", time.localtime(start_time))
+                st = time.strftime("%Y-%m-%d %H:%M", time.localtime(start_time))
                 et = time.strftime("%H:%M", time.localtime(end_time))
                 title = title.replace(flag, "") + st + " ~ " + et
             else:
