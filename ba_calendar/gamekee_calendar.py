@@ -1,5 +1,5 @@
 import re
-
+import time
 
 def extract_calendar_data(server, data):
     if server == "jp":
@@ -12,14 +12,19 @@ def extract_calendar_data(server, data):
     for item in data:
         try:
             title = item["title"]
+            start_time = item["begin_at"]
+            end_time = item["end_at"]
             if flag not in item["pub_area"]:
                 continue
             if "卡池" in title:
                 title = title.replace(flag, "")
+            elif "维护" in title:
+                st = time.strftime("%m-%d %H:%M", time.localtime(start_time))
+                et = time.strftime("%H:%M", time.localtime(end_time))
+                title = title.replace(flag, "") + st + " ~ " + et
             else:
                 title = re.sub(r'【.*?】', "", title)
-            start_time = item["begin_at"]
-            end_time = item["end_at"]
+
 
             event_name = title
 
