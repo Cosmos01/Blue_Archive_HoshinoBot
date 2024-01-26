@@ -194,7 +194,7 @@ async def get_student_info(nickname):
     for skill in base_info["Skills"]:
         skills.append(skill)
         if "ExtraSkills" in skill:
-            skills.append(skill["ExtraSkills"])
+            skills += skill["ExtraSkills"]
     for skill in skills:
         if "Name" not in skill:
             continue
