@@ -299,8 +299,8 @@
 		]
 	},
 	"GLOBAL": {
-		"up_prob": 7,
-		"s3_prob": 30,
+		"up_prob": 14,
+		"s3_prob": 60,
 		"s2_prob": 185,
 		"up": [
 			"花子(泳装)"
