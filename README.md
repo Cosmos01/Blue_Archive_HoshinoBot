@@ -4,8 +4,10 @@
 
   
 **临时公告**
+- 目前处于QQ向NT版本转型期间，可能会出现问题，可以提issues，最好能给出解决方案，谢谢。
 - 新增总力排名功能，支持国服、B服、日服，总力战和大决战
 - 清理了一下仓库，大小减少到22MB了。无法pull的删除重新clone，data.json文件可以备份一下。
+
     
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
 纯净整合包  https://github.com/Cosmos01/HoshinoBot_Blue
