@@ -27,7 +27,7 @@
 - 角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)   
 - 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)  
 - 游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)
-- 总力排名：[日服](https://arona.ai/graph)、[国服](https://arona.icu/)(加群没反应，API已标明出处，每天只获取3次，使用我的服务器分发，如有问题可以联系我)
+- 总力排名：[日服](https://arona.ai/graph)、[国服](https://arona.icu/)
 <br><br>
 ## 安装方法
 
