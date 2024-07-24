@@ -110,7 +110,8 @@ async def get_arona_img(name):
             img_cont = await r.content
             with open(R.img(base_path + path).path, 'wb') as f:
                 f.write(img_cont)
-        msgs.append(R.img(base_path + path).cqcode)
+        with open(R.img(base_path + path).path, 'rb') as f:
+            msgs.append(img_content_to_cqcode(f.read()))
     except Exception as e:
         logging.warning(e)
         msgs.append("查询失败")
