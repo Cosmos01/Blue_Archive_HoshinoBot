@@ -5,8 +5,7 @@
   
 **临时公告**
 - 目前处于QQ向NT版本转型期间，可能会出现问题，可以提issues，最好能给出解决方案，谢谢。
-- 清理了一下仓库，大小减少到22MB了。无法pull的删除重新clone，data.json文件可以备份一下。
-- arona.icu功能接入中…
+- SchaleDB的GitHub停更了，还改了一堆结构，改成从官网拿信息了
 
     
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
