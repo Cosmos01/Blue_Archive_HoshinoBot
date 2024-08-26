@@ -34,7 +34,7 @@ student_icon_base_url = base_url + "/SchaleDB/images/student/icon/"
 async def update_icon():
     try:
         students = await get_json_data(student_jp_url, proxies=proxy)
-        for student in students:
+        for student in students.values():
             if R.img(f'bluearchive/unit/icon_unit_{str(student["Id"])}.png').exist:
                 continue
             print(f'检测到缺失角色图片：{student["DevName"]}，正在从SchaleDB下载图片')
