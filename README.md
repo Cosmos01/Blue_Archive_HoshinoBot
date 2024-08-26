@@ -5,7 +5,6 @@
   
 **临时公告**
 - 目前处于QQ向NT版本转型期间，可能会出现问题，可以提issues，最好能给出解决方案，谢谢。
-- SchaleDB的GitHub停更了，还改了一堆结构，改成从官网拿信息了
 
     
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
