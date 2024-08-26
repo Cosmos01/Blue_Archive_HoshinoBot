@@ -109,7 +109,7 @@ async def get_student_info(nickname):
 
     msg_list = []
 
-    base_info = get_item(student_data, "Id", student_id)
+    base_info = student_data[str(student_id)]
 
     # 头像
     res = R.img(f'bluearchive/unit/icon_unit_{str(student_id)}.png')
@@ -190,18 +190,19 @@ async def get_student_info(nickname):
     # 技能
     global parameters
     skill_desc = ""
-    skills = []
-    for skill in base_info["Skills"]:
-        skills.append(skill)
+    skills = {}
+    for t, skill in base_info["Skills"].items():
+        skills[t] = skill
         if "ExtraSkills" in skill:
-            skills += skill["ExtraSkills"]
-    for skill in skills:
+            for extraSkill in skill["ExtraSkills"]:
+                skills[extraSkill["Id"]] = extraSkill
+    for t, skill in skills.items():
         if "Name" not in skill:
             continue
-        skill_desc += skill["SkillType"] + "\n"
+        skill_desc += t + "\n"
         skill_desc += skill["Name"]
         parameters = skill["Parameters"]
-        if skill["SkillType"] == "ex":
+        if t == "ex":
             skill_desc += f' (Cost:{str(skill["Cost"][0])}→{str(skill["Cost"][-1])})'
             desc = re.sub(r'<\?(\d+)>', fmt_para_ex, skill["Desc"])
         else:
