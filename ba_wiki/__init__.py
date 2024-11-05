@@ -13,7 +13,7 @@ arona_img_url = "https://arona.cdn.diyigemt.com/image"
 gamekee_url = "https://ba.gamekee.com/v1/content/detail/"
 
 urls = {
-    "cn_pools": "596691",
+    "cn_pools": "629119",
     "global_pools": "150045",
 }
 
@@ -25,17 +25,22 @@ async def get_pools(server="cn"):
     data = await r.json()
     msgs = []
     try:
-        thumb = data["data"]["thumb"]
-        thumb_urls = thumb.split(",")
-        for thumb_url in thumb_urls:
-            img_url = "https:" + thumb_url.strip("")
-            img_content = await get_img_content(img_url)
-            msgs.append("\n" + img_content_to_cqcode(img_content))
-        if len(thumb_urls) == 0:
-            for thumb_url in data["data"]["thumb_list"]:
-                img_url = "https:" + thumb_url
-                img_content = await get_img_content(img_url)
-                msgs.append("\n" + img_content_to_cqcode(img_content))
+        content_json = data["data"]["content_json"]
+        json_data = json.loads(content_json)
+        for item in json_data:
+            if "children" not in item:
+                continue
+            for children in item["children"]:
+                if "isAdaptive" not in children or "src" not in children:
+                    continue
+                if children["isAdaptive"] and children["src"].startswith("//"):
+                    img_url = "https:" + children["src"]
+                    img_content = await get_img_content(img_url)
+                    msgs.append(img_content_to_cqcode(img_content))
+                if len(msgs) >= 2:
+                    break
+            if len(msgs) >= 2:
+                break
     except Exception as e:
         msgs.append("获取千里眼图片失败")
         logging.warning(e)
