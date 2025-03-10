@@ -1,8 +1,5 @@
-import os
-import json
 import datetime
 import time
-
 import aiohttp
 import asyncio
 import math
@@ -37,6 +34,12 @@ lock = {
     'en-jp': asyncio.Lock(),
     'db-jp': asyncio.Lock(),
     'db-global': asyncio.Lock(),
+}
+
+gamekee_server = {
+    '日服': 15,
+    '国服': 16,
+    '国际服': 17
 }
 
 
@@ -112,6 +115,26 @@ async def load_event_gamekee(server):
                     if item["module"]["name"] == "活动周历":
                         gamekee_data = item["list"]
                         break
+            for sn, sid in gamekee_server.items():
+                pool_title = []
+                async with session.get(f'https://www.gamekee.com/v1/cardPool/query-list?order_by=-1&card_tag_id'
+                                       f'=&keyword=&kind_id=6&status=0&serverId={sid}') as resp:
+                    res = await resp.json()
+                    gacha_data = res["data"]
+                    for pool in gacha_data:
+                        if pool["end_at"] > time.time():
+                            pool_title.append(pool["name"])
+                        else:
+                            break
+                    if len(pool_title) > 0:
+                        gamekee_data.append(
+                            {
+                                "title": f"{sn}卡池：{'、'.join(pool_title)}",
+                                "begin_at": gacha_data[0]["start_at"],
+                                "end_at": gacha_data[0]["end_at"],
+                                "pub_area": sn
+                            }
+                        )
         if gamekee_data == []:
             print('gamekee数据错误')
             return 1
