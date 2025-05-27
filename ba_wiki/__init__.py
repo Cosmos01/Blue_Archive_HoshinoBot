@@ -175,7 +175,7 @@ async def send_student_list(bot, ev):
         await bot.send(ev, "获取角色列表失败")
         return
     forward_msg = []
-    for msg in msgs:
+    for i, msg in enumerate(msgs):
         forward_msg.append({
             "type": "node",
             "data": {
@@ -184,7 +184,10 @@ async def send_student_list(bot, ev):
                 "content": msg
             }
         })
-    await bot.send_group_forward_msg(group_id=ev.group_id, messages=forward_msg)
+        if (i > 0 and i%50 == 0) or i == len(msgs) - 1:
+            await bot.send_group_forward_msg(group_id=ev.group_id, messages=forward_msg)
+            forward_msg.clear()
+    # await bot.send_group_forward_msg(group_id=ev.group_id, messages=forward_msg)
 
 
 @sv.on_rex(r'^(?P<server>[日国Bb])?服?第?(?P<num>\d+)?期?(?P<type>(总力|大决))战?排名')
