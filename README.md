@@ -2,10 +2,6 @@
   
 碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
 
-  
-**临时公告**
-- 目前处于QQ向NT版本转型期间，可能会出现问题，可以提issues，最好能给出解决方案，谢谢。
-
     
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
 纯净整合包  https://github.com/Cosmos01/HoshinoBot_Blue
@@ -21,7 +17,7 @@
 
 <br><br>
 ## 信息源
-- 日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://lonqie.github.io/SchaleDB/)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
+- 日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://schaledb.com)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
 - 角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)   
 - 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)  
 - 游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)
@@ -68,16 +64,16 @@
 
 <br><br>
 ## 注意事项  
-1. 如果需要更久以后的日历，可以将[generate.py](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/blob/main/ba_calendar/generate.py)的`get_events(server, 0, 7)`的7改成14或更久以后的天数。
-2. 推特5分钟获取一次，01分时获取，可以在诸如1分10秒，6分10秒这样的时间运行bot,可以更早获取到推特。
-3. 总力一图流可以改为本地获取，注释上面代码，取消注释下面代码，配置代理(可以直接在代码中设置proxy参数，见注释，也可以用Proxifier给"*.gamer.com.tw"设置代理)。由于巴哈姆特反爬加强，修改为selenium获取网页，需要配置selenium环境才能够使用。
-4. 使用shamrock等非本机QQ端会导致部分图片无法发送，在hoshino\config\__bot__.py中修改RES_PROTOCOL为base64（http配好RES_URL应该也可以）
+1. 如果需要更久以后的日历，可以将[generate.py](https://github.com/Cosmos01/Blue_Archive_HoshinoBot/blob/main/ba_calendar/generate.py)的`get_events(server, 0, 7)`的7改成14或更久以后的天数
+2. 推特5分钟获取一次，01分时获取，可以在诸如1分10秒，6分10秒这样的时间运行bot,可以更早获取到推特
+3. 使用非本机QQ端会导致部分图片无法发送，在hoshino\config\__bot__.py中修改RES_PROTOCOL为base64（http配好RES_URL应该也可以）
+4. 角色数据源是SchaleDB，有时候更新的晚会出现无头像情况，等一两天就好。卡池是我手动更新，由于我只玩日服，可能更新的不及时，复刻池也可能懒得更新，欢迎pr
 
 <br><br>
 ## 鸣谢
 感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API    
 感谢[@benx1n](https://github.com/benx1n)提供的代码    
-感谢天上掉下来的代码。(所有代码都不是本人所写，都是天上掉下来的，修bug也是天修的)    
-感谢群友帮忙整理角色名，欢迎加社团(日服id:20、911，国服群：369363981)。    
+感谢[SchaleDB](https://schaledb.com)的数据    
+感谢群友帮忙整理角色名，欢迎加社团(日服id:911)    
 
 
