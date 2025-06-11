@@ -116,22 +116,30 @@ async def load_event_gamekee(server):
                         gamekee_data = item["list"]
                         break
             for sn, sid in gamekee_server.items():
-                pool_title = []
+                pool_dic = {}
                 async with session.get(f'https://www.gamekee.com/v1/cardPool/query-list?order_by=-1&card_tag_id'
                                        f'=&keyword=&kind_id=6&status=0&serverId={sid}') as resp:
                     res = await resp.json()
                     gacha_data = res["data"]
                     for pool in gacha_data:
                         if pool["end_at"] > time.time():
-                            pool_title.append(pool["name"])
+                            if str(pool["end_at"]) in pool_dic:
+                                pool_dic[str(pool["end_at"])].append(pool)
+                            else:
+                                pool_dic[str(pool["end_at"])] = [pool]
                         else:
                             break
-                    if len(pool_title) > 0:
+                    for pools in pool_dic.values():
+                        pool_title = []
+                        for pool in pools:
+                            pool_title.append(pool["name"])
+                        if len(pool_title) == 0:
+                            continue
                         gamekee_data.append(
                             {
                                 "title": f"{sn}卡池：{'、'.join(pool_title)}",
-                                "begin_at": gacha_data[0]["start_at"],
-                                "end_at": gacha_data[0]["end_at"],
+                                "begin_at": pools[0]["start_at"],
+                                "end_at": pools[0]["end_at"],
                                 "pub_area": sn
                             }
                         )
