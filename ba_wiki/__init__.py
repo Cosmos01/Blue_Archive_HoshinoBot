@@ -20,7 +20,7 @@ urls = {
 
 async def get_pools(server="cn"):
     url = gamekee_url + urls[server + "_pools"]
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Game-Alias": "ba"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Game-Alias": "ba", "Referer": "https://www.gamekee.com/"}
     r = await aiorequests.get(url, headers=headers)
     data = await r.json()
     msgs = []
@@ -35,7 +35,7 @@ async def get_pools(server="cn"):
                     continue
                 if children["isAdaptive"] and children["src"].startswith("//"):
                     img_url = "https:" + children["src"]
-                    img_content = await get_img_content(img_url)
+                    img_content = await get_img_content(img_url,headers)
                     msgs.append(img_content_to_cqcode(img_content))
                 if len(msgs) >= 2:
                     break
