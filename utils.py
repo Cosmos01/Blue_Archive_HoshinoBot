@@ -56,10 +56,10 @@ async def get_json_data(url, proxies=None):
     return None
 
 
-async def get_img_content(url, proxies=None):
+async def get_img_content(url, headers=None, proxies=None):
     for i in range(2):
         try:
-            r = await aiorequests.get(url, timeout=15)
+            r = await aiorequests.get(url, headers=headers, timeout=15)
             content = await r.content
             if r.status_code == 200:
                 return content
