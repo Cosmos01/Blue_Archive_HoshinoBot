@@ -17,7 +17,6 @@ def get_config():
     return config
 
 
-
 def get_base_url():
     try:
         config = get_config()
@@ -103,7 +102,7 @@ def get_default_server(gid):
 
 def get_student_id(nickname):
     student_list = \
-    json.load(open(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'gacha/_ba_data.json'), encoding="utf-8"))[
+    json.load(open(os.path.join(os.path.dirname(__file__), 'gacha/_ba_data.json'), encoding="utf-8"))[
         "CHARA_NAME"]
     for student_id, student_names in student_list.items():
         if student_id == "1000":
