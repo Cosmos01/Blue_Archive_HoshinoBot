@@ -1,3 +1,6 @@
 {
-  "base_url" : "https://blue-archive.oss-cn-shanghai.aliyuncs.com/"
+  "base_url" : "https://blue-archive.oss-cn-shanghai.aliyuncs.com/",
+  "arona_icu_api": "https://api.arona.icu/",
+  "arona_icu_token" : "",
+  "arona_icu_proxy" : ""
 }
