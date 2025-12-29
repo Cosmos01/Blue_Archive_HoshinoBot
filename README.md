@@ -18,10 +18,10 @@
 <br><br>
 ## 信息源
 - 日历: [GameKee](https://ba.gamekee.com/)、[SchaleDB](https://schaledb.com)、[EnWiki](https://bluearchive.wiki/wiki/Main_Page)  
-- 角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)   
-- 角色评价：[夜猫咪喵喵猫](https://space.bilibili.com/425535005)  
+- 角色信息：[SchaleDB](https://lonqie.github.io/SchaleDB/)
 - 游戏攻略：[arona](https://doc.arona.diyigemt.com/api/)
-- 总力排名：[日服](https://arona.ai/graph)、[国服](https://arona.icu/)
+- 总力排名：[日服](https://yuzutrends.vercel.app/)、[国服](https://arona.icu/)
+- 助战：[arona.icu](https://arona.icu/)
 <br><br>
 ## 安装方法
 
@@ -60,8 +60,9 @@
 
 <br><br>
 ## ARONA攻略查询
-  感谢arona提供的api，使用本地缓存+hash校验，位置在`HoshinoBot\res\img\bluearchive\wiki`  
-  支持查询的关键词请看[链接](https://doc.arona.diyigemt.com/v1/command/manual#%E5%AD%A6%E7%94%9F%E4%B8%8E%E4%B8%BB%E7%BA%BF%E5%9C%B0%E5%9B%BE%E6%94%BB%E7%95%A5%E7%B3%BB%E5%88%97)    
+  感谢arona提供的api
+  使用本地缓存+hash校验，位置在`HoshinoBot\res\img\bluearchive\wiki`  
+  支持查询的关键词请看[arona用户手册](https://doc.arona.diyigemt.com/v1/command/manual#%E5%AD%A6%E7%94%9F%E4%B8%8E%E4%B8%BB%E7%BA%BF%E5%9C%B0%E5%9B%BE%E6%94%BB%E7%95%A5%E7%B3%BB%E5%88%97)    
 
 <br><br>
 ## 注意事项  
