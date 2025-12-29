@@ -17,6 +17,7 @@ def get_config():
     return config
 
 
+
 def get_base_url():
     try:
         config = get_config()
@@ -24,7 +25,7 @@ def get_base_url():
     except Exception as e:
         logging.error("配置获取失败，请检查插件目录下的config.json文件")
         logging.error(e)
-        return "http://124.223.25.80:40000/"
+        return "https://blue-archive.oss-cn-shanghai.aliyuncs.com/"
 
 
 def img_to_base64str(img):
@@ -42,10 +43,13 @@ def img_content_to_cqcode(content):
     return f"[CQ:image,file={img_content_to_base64str(content)}]"
 
 
-async def get_json_data(url, proxies=None):
+async def get_json_data(url, data=None, headers=None, proxies=None):
     for i in range(2):
         try:
-            res = await aiorequests.get(url, timeout=15, proxies=proxies)
+            if data is not None:
+                res = await aiorequests.post(url, json=data, headers=headers, timeout=15, proxies=proxies)
+            else:
+                res = await aiorequests.get(url, headers=headers, timeout=15, proxies=proxies)
             if res.status_code == 200:
                 data = await res.json()
                 return data
@@ -94,3 +98,16 @@ def get_default_server(gid):
         return "cn"
     elif "global" in server:
         return "global"
+    return "jp"
+
+
+def get_student_id(nickname):
+    student_list = \
+    json.load(open(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'gacha/_ba_data.json'), encoding="utf-8"))[
+        "CHARA_NAME"]
+    for student_id, student_names in student_list.items():
+        if student_id == "1000":
+            continue
+        if nickname in student_names:
+            return student_id
+    return None
