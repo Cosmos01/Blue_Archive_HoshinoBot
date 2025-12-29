@@ -1,7 +1,6 @@
 import hashlib
 from hoshino import R, Service
 from ..utils import *
-from .raid_img import get_raid_img
 from .student_info import get_student_info, get_student_list
 
 sv = Service('ba_wiki', enable_on_default=True, visible=True, bundle='碧蓝档案攻略查询')
@@ -134,18 +133,18 @@ async def send_arona(bot, ev):
         await bot.send(ev, msg)
 
 
-@sv.on_rex(r'([日国國美台])?[际際]?[服]?总力一图流')
-async def raid_img(bot, ev):
-    server_name = ev['match'].group(1)
-    if server_name == "日" or server_name is None:
-        server_name = "日"
-    else:
-        server_name = "國際"
-    raid_data = await get_raid_img(server_name)
-    if raid_data == "":
-        await bot.send(ev, "获取图片失败")
-        return
-    await bot.send(ev, f'[CQ:image,file={raid_data}]')
+# @sv.on_rex(r'([日国國美台])?[际際]?[服]?总力一图流')
+# async def raid_img(bot, ev):
+#     server_name = ev['match'].group(1)
+#     if server_name == "日" or server_name is None:
+#         server_name = "日"
+#     else:
+#         server_name = "國際"
+#     raid_data = await get_raid_img(server_name)
+#     if raid_data == "":
+#         await bot.send(ev, "获取图片失败")
+#         return
+#     await bot.send(ev, f'[CQ:image,file={raid_data}]')
 
 
 @sv.on_prefix('ba查询')
