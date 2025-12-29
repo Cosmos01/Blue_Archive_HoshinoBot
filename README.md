@@ -1,6 +1,6 @@
 # Blue_Archive_HoshinoBot
   
-碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取插件, 适用于 HoshinoBot v2.  
+碧蓝档案图形化活动日历、模拟抽卡、官推转发、角色查询、攻略获取、助战查询插件, 适用于 HoshinoBot v2.  
 
     
 项目地址  https://github.com/Cosmos01/Blue_Archive_HoshinoBot  
@@ -33,7 +33,8 @@
 部分模块默认是关闭状态，抽卡前请先更新卡池  
 使用bot指令开启功能：  
 - `启用 ba_calendar`
-- `启用 ba_twitter`(日服推特获取)  
+- `启用 ba_twitter`(日服推特获取)
+- `启用 arona_icu`(助战查询，需要token)
 - `ba(日,国,国际,en日,db日,db国际)服日历 on`
 - `ba更新卡池` 
 
@@ -46,7 +47,6 @@
 - `ba日历 time 时:分` : 设置日历推送时间
 - `ba日历 status` : 查看本群日历推送设置
 - `ba日历 cardimage` : (go-cqhttp限定)切换是否使用cardimage模式发送日历图片(我也不晓得有啥区别)
-- `(日/国际服)总力一图流` : 当前总力一图流,为空时默认日服
 - `ba来一井\ba十连\ba单抽` : 模拟抽卡
 - `ba更新卡池` : 更新角色列表、卡池、资源文件，默认会自动更新
 - `ba氪金+@目标` : 恢复抽卡次数，可@多个目标
@@ -56,6 +56,7 @@
 - `ba攻略(攻略查询、/攻略)+关键词` : 查询攻略，支持模糊查询，关键词可为学生/地图/活动等，`杂图`做关键词获取详情 
 - `balogo+上文/下文` : 生成你游风格logo,上下文使用`/`分隔
 - `(日/国/B服)(第X期)总力/大决战排名` : 为空默认为日历服务器最新一期
+- `我要借/助战查询 (X服)(总力/演习)(X星)(s/专X)角色名(页码)`：查询助战，需要在config.json填写token。[获取token](https://arona.icu/about)
 
 <br><br>
 ## ARONA攻略查询
@@ -71,7 +72,7 @@
 
 <br><br>
 ## 鸣谢
-感谢[arona](https://doc.arona.diyigemt.com/api/)提供的API    
+感谢[arona](https://doc.arona.diyigemt.com/api/)和[arona.icu](https://arona.icu)提供的API    
 感谢[@benx1n](https://github.com/benx1n)提供的代码    
 感谢[SchaleDB](https://schaledb.com)的数据    
 感谢群友帮忙整理角色名，欢迎加社团(日服id:911)    
