@@ -13,7 +13,7 @@ async def get_support(bot, ev):
         await bot.send(ev, '请指定角色名或昵称')
         return
     rs = re.match(
-        r'^((?P<server>国|官|B|b|日|全球|港|澳|台|韩|亚|美)服)?(?P<atype>总力战|总力|演习|占领战|占领)?((?P<star>[1-5一二三四五])[星Xx*])?([专Ss](?P<weapon>[123一二三]))?(?P<nickname>.+?)(?P<page>\d)?$',
+        r'^((?P<server>国|官|B|b|日|全球|港|澳|台|韩|亚|美)服)?(?P<atype>总力战|总力|演习|占领战|占领)?((?P<star>[1-5一二三四五])[星Xx*])?([专Ss](?P<weapon>[1234一二三四]))?(?P<nickname>\D+?)(?P<page>\d+)?$',
         match_message)
     table = str.maketrans('一二三四五', '12345')
     server = rs.group("server") if rs.group("server") else None
@@ -186,4 +186,5 @@ async def get_support(bot, ev):
 # @nonebot.on_startup
 # async def startup():
 #     load_user_data()
+
 
