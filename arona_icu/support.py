@@ -1,7 +1,7 @@
 from ..utils import get_json_data, get_student_id, get_config
 
 config = get_config()
-token = config["arona_icu_token"] if "arona_icu_token" in config and config["arona_icu_token"] != "" else None
+token = config["arona_icu_token"] if "arona_icu_token" in config and config["arona_icu_token"] != "" else "uuz:uuz"
 base_api = config["arona_icu_api"] if "arona_icu_api" in config and config["arona_icu_api"] != "" else "https://api.arona.icu/"
 proxy = config["arona_icu_proxy"] if "arona_icu_proxy" in config and config["arona_icu_proxy"] != "" else None
 proxies = None
@@ -70,3 +70,4 @@ async def search_support(nickname: str, server: int = 1,atype: int = 2, star: in
         result.append(msg)
     result.append(f'{data["totalData"]}条 {data["page"]}/{data["totalPages"]}页')
     return result
+
