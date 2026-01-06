@@ -36,9 +36,9 @@ async def get_pools(server="cn"):
                     img_url = "https:" + children["src"]
                     img_content = await get_img_content(img_url,headers)
                     msgs.append(img_content_to_cqcode(img_content))
-                if len(msgs) >= 2:
+                if len(msgs) >= 4:
                     break
-            if len(msgs) >= 2:
+            if len(msgs) >= 4:
                 break
     except Exception as e:
         msgs.append("获取千里眼图片失败")
