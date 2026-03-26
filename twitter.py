@@ -1,4 +1,5 @@
 import hoshino
+from datetime import datetime, timedelta
 from .utils import *
 
 sv = hoshino.Service('ba_twitter', enable_on_default=False, visible=True, bundle='碧蓝档案日服推特')
@@ -8,6 +9,12 @@ async def get_tweets():
     res = ""
     url = get_base_url() + "/ba_twitter.json"
     json_data = await get_json_data(url)
+    target_time = datetime.fromisoformat(json_data['time'])
+    now = datetime.now()
+    time_diff = abs(now - target_time)
+    if time_diff > timedelta(minutes=10):
+        logging.warning("ba推特数据未更新")
+        return None
     if json_data is None:
         logging.warning("获取ba推特数据失败,请检查是否有更新或提交issues")
         return None
