@@ -109,11 +109,17 @@ async def load_event_gamekee(server):
         async with aiohttp.ClientSession() as session:
             session.headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
             session.headers['Game-Alias'] = 'ba'
-            async with session.get('https://ba.gamekee.com/v1/wiki/index') as resp:
+            async with session.get('https://www.gamekee.com/v1/wiki/indexV2') as resp:
                 res = await resp.json()
                 for item in res["data"]:
                     if item["module"]["name"] == "活动周历":
-                        gamekee_data = item["list"]
+                        #gamekee_data = item["list"].values()
+                        if server == "jp":
+                            gamekee_data = item["list"]["15"]
+                        elif server == "cn":
+                            gamekee_data = item["list"]["16"]
+                        else:
+                            gamekee_data = item["list"]["17"]
                         break
             for sn, sid in gamekee_server.items():
                 pool_dic = {}
